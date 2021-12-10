@@ -10,7 +10,6 @@ namespace M01_ConsoleApp
         static void Main(string[] args)
         {
             // Start "M01. Introduction to the Language. Basic Coding" homework result
-
             PrintModuleTitle(); 
 
             // Array Bubbel sort
