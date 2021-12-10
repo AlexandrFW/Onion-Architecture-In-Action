@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace ArrayHelper
 {
@@ -7,44 +8,32 @@ namespace ArrayHelper
         /// <summary>
         /// Calculate sum of all positive elemets of two dimensional array
         /// </summary>
-        /// <param name="arrTwoDimensialArray">Two-dimetional array which positive elements should be sum</param>
+        /// <param name="arrTwoDimensionalArray">Two-dimetional array which positive elements should be sum</param>
         /// <returns>Sum of all positive elements </returns>
-        public static int SumAllPositiveElementsOfTwoDimensialArray(int[,] arrTwoDimensialArray)
+        public static int SumAllPositiveElementsOfTwoDimensionalArray(int[,] arrTwoDimensionalArray)
         {
-            if (arrTwoDimensialArray is null)
+            if (arrTwoDimensionalArray is null)
                 return -1;
 
             int nSum = 0;
-            int nSize1 = 0;
-            int nSize2 = 0;
-            int nRank = arrTwoDimensialArray.Rank;
+            int nRank = arrTwoDimensionalArray.Rank;
 
             // Two-dimentional array only
             if (nRank == 2)
             {
-                // Try specify sizes of each dimentions
-                for (int dimension = 1; dimension <= nRank; dimension++)
-                    switch (dimension)
-                    {
-                        case 1:
-                            nSize1 = arrTwoDimensialArray.GetUpperBound(dimension - 1) + 1;
-                            break;
-
-                        case 2:
-                            nSize2 = arrTwoDimensialArray.GetUpperBound(dimension - 1) + 1;
-                            break;
-
-                        default:
-                            break;
-                    }
+                // Specify sizes of each dimentions
+                int nSize1 = arrTwoDimensionalArray.GetUpperBound(0) + 1;
+                int nSize2 = arrTwoDimensionalArray.Length / nSize1;
 
                 // Go through all of elements
                 for (int i = 0; i < nSize1; i++)
                     for (int j = 0; j < nSize2; j++)
                     {
                         // Sum of all positive elements
-                        if (arrTwoDimensialArray[i, j] > 0)
-                            nSum += arrTwoDimensialArray[i, j];
+                        if (arrTwoDimensionalArray[i, j] > 0)
+                        {
+                            nSum += arrTwoDimensionalArray[i, j];
+                        }
                     }
 
                 return nSum;

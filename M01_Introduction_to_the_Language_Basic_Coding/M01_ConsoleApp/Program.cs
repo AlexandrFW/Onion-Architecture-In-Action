@@ -75,7 +75,7 @@ namespace M01_ConsoleApp
 
             Console.WriteLine("\r");
             int[,] arrTwoDimentionalArray = new int[,] { { 1, 2 }, { 23, 4 }, { 5, 46 }, { 27, 8 }, { -4, 2 }, { 3, -7 }, { -15, 6 }, { 7, 85 } };            
-            int nSumAllPositiveElements = ArrayCalc.SumAllPositiveElementsOfTwoDimensialArray(arrTwoDimentionalArray);
+            int nSumAllPositiveElements = ArrayCalc.SumAllPositiveElementsOfTwoDimensionalArray(arrTwoDimentionalArray);
 
             // Print the sum if a two-dimensional array has been given
             if (nSumAllPositiveElements > 0)
@@ -100,6 +100,7 @@ namespace M01_ConsoleApp
             Console.WriteLine($"First side length: { nFirstSideOfRectangle }");
             Console.WriteLine($"Second side length: { nSecondSideOfRecangle }");
 
+            Console.WriteLine("\r\n");
 
             Console.WriteLine("Calculate the perimeter of a rectangle:");
             Console.WriteLine($"Perimeter is: { RectangleCalc.RectanglePerimeterCalc(nFirstSideOfRectangle, nSecondSideOfRecangle) }");
