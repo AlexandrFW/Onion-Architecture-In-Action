@@ -74,13 +74,8 @@ namespace M01_ConsoleApp
             // Sum all even elements of an given two-dimencional array
             Console.WriteLine("Sum all positive elements of a two-dimensional array\r\n");
 
-            int[,] arrTwoDimentionalArray = new int[,] { { 1, 2 }, { 23, 4 }, { 5, 46 }, { 27, 8 }, { -4, 2 }, { 3, -7 }, { -15, 6 }, { 7, 85 } };
-            //int[,] arrTwoDimentionalArray = new int[,] { { 1,  }, { 23,  }, { 5,  }, { 27, }, { -4,  }, { 3,  }, { -15,  }, { 7, } };
-
-            //Console.Write("[{0},{0}]", string.Join(", ", arrTwoDimentionalArray));
-            Console.WriteLine("\r\n");
-            Console.WriteLine("Number of Dimensions: {0,3}", arrTwoDimentionalArray.Rank);
             Console.WriteLine("\r");
+            int[,] arrTwoDimentionalArray = new int[,] { { 1, 2 }, { 23, 4 }, { 5, 46 }, { 27, 8 }, { -4, 2 }, { 3, -7 }, { -15, 6 }, { 7, 85 } };            
             int nSumAllPositiveElements = ArrayCalc.SumAllPositiveElementsOfTwoDimensialArray(arrTwoDimentionalArray);
 
             // Print the sum if a two-dimensional array has been given
@@ -101,6 +96,11 @@ namespace M01_ConsoleApp
 
             int nFirstSideOfRectangle = 23;
             int nSecondSideOfRecangle = 35;
+
+            Console.WriteLine("Rectangle parameters:");
+            Console.WriteLine($"First side length: { nFirstSideOfRectangle }");
+            Console.WriteLine($"Second side length: { nSecondSideOfRecangle }");
+
 
             Console.WriteLine("Calculate the perimeter of a rectangle:");
             Console.WriteLine($"Perimeter is: { RectangleCalc.RectanglePerimeterCalc(nFirstSideOfRectangle, nSecondSideOfRecangle) }");

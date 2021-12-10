@@ -11,6 +11,9 @@ namespace ArrayHelper
         /// <returns>Sum of all positive elements </returns>
         public static int SumAllPositiveElementsOfTwoDimensialArray(int[,] arrTwoDimensialArray)
         {
+            if (arrTwoDimensialArray is null)
+                return -1;
+
             int nSum = 0;
             int nSize1 = 0;
             int nSize2 = 0;

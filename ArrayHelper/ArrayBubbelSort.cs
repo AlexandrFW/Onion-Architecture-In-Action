@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace ArrayHelper
+﻿namespace ArrayHelper
 {
     public static class ArrayBubbelSort
     {
+        /// <summary>
+        /// Sort ascending one-dimension array
+        /// </summary>
+        /// <param name="arrA">Unsorted one-dimetional array</param>
+        /// <returns>Sorted ascending one-dimension array </returns>
         public static int[] BubbelSortAsc(int[] arrA)
         {
             arrA = SortArray(arrA, true);
@@ -12,7 +14,11 @@ namespace ArrayHelper
             return arrA;
         }
 
-
+        /// <summary>
+        /// Sort descending one-dimension array
+        /// </summary>
+        /// <param name="arrA">Unsorted one-dimetional array</param>
+        /// <returns>Sorted descending one-dimension array </returns>
         public static int[] BubbelSortDesc(int[] arrA)
         {
             arrA = SortArray(arrA, false);
