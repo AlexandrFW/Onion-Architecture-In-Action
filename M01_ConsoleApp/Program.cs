@@ -20,7 +20,7 @@ namespace M01_ConsoleApp
             PrintCalcSumAllPositiveElementsOfTwoDimensionalArray();
 
             // Perimeter and square of rectangle calculation result
-            PrintPerimeterAndSquareOfRectangleCalcResult();
+            PrintPerimeterAndSquareOfRectangleCalcResult(); 
 
 
             Console.ReadKey();
