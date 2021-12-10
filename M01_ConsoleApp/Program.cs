@@ -11,7 +11,7 @@ namespace M01_ConsoleApp
         {
             // Start "M01. Introduction to the Language. Basic Coding" homework result
 
-            PrintModuleTitle();
+            PrintModuleTitle(); 
 
             // Array Bubbel sort
             PrintArrayBubbelSortExample();
