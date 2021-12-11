@@ -12,8 +12,8 @@ namespace M01_ConsoleApp
             // Start "M01. Introduction to the Language. Basic Coding" homework result
             PrintModuleTitle(); 
 
-            // Array Bubbel sort
-            PrintArrayBubbelSortExample();
+            // Array Bubble sort
+            PrintArrayBubbleSortExample();
 
             // Calculation sum of all positive elements of two dimentional array
             PrintCalcSumAllPositiveElementsOfTwoDimensionalArray();
@@ -29,15 +29,15 @@ namespace M01_ConsoleApp
         private static void PrintModuleTitle()
         {
             Console.WriteLine("M01. Introduction to the Language. Basic Coding\r\n");
-            Console.WriteLine("Start using ArrayHelper to show how the Bubbel sort work.");
+            Console.WriteLine("Start using ArrayHelper to show how the Bubble sort work.");
             Console.WriteLine("\r\n");
         }
 
-        private static void PrintArrayBubbelSortExample()
+        private static void PrintArrayBubbleSortExample()
         {
             // Sort array ascending
 
-            Console.WriteLine("Create an array of integers and sort it ascending using the Bubbel sort\r\n");
+            Console.WriteLine("Create an array of integers and sort it ascending using the Bubble sort\r\n");
 
             int[] arrArrayToSort = new int[] { 2, 4, 1, 3, 8, 5, 7, 6, 9, 0 };
             Console.WriteLine("Before sort\r");
@@ -52,14 +52,14 @@ namespace M01_ConsoleApp
 
             // Sort array descending
 
-            Console.WriteLine("Create an array of integers and sort it descending using the Bubbel sort\r\n");
+            Console.WriteLine("Create an array of integers and sort it descending using the Bubble sort\r\n");
 
             arrArrayToSort = new int[] { 2, 4, 1, 3, 8, 5, 7, 6, 9, 0 };
             Console.WriteLine("Before sort\r");
             Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
             Console.WriteLine("\r\n");
 
-            arrArrayToSort = ArrayBubbleSort.BubbelSortDesc(arrArrayToSort);
+            arrArrayToSort = ArrayBubbleSort.BubbleSortDesc(arrArrayToSort);
             Console.WriteLine("After sort\r");
             Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
             Console.WriteLine("\r\n");
@@ -90,7 +90,7 @@ namespace M01_ConsoleApp
         private static void PrintPerimeterAndSquareOfRectangleCalcResult()
         {
             // Second part of homework - using RectangleHelper
-            Console.WriteLine("Start using RectangleHelper to show how the Bubbel sort work.");
+            Console.WriteLine("Start using RectangleHelper to show how the Bubble sort work.");
             Console.WriteLine("\r\n");
 
             int nFirstSideOfRectangle = 23;
