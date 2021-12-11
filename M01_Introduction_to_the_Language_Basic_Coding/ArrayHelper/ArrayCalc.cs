@@ -16,32 +16,18 @@ namespace ArrayHelper
                 return -1;
 
             int nSum = 0;
-            int nRank = arrTwoDimensionalArray.Rank;
 
-            // Two-dimentional array only
-            if (nRank == 2)
+            // Go through all of elements
+            foreach (int i in arrTwoDimensionalArray)
             {
-                // Specify sizes of each dimentions
-                int nSize1 = arrTwoDimensionalArray.GetUpperBound(0) + 1;
-                int nSize2 = arrTwoDimensionalArray.Length / nSize1;
-
-                // Go through all of elements
-                for (int i = 0; i < nSize1; i++)
-                    for (int j = 0; j < nSize2; j++)
-                    {
-                        // Sum of all positive elements
-                        if (arrTwoDimensionalArray[i, j] > 0)
-                        {
-                            nSum += arrTwoDimensionalArray[i, j];
-                        }
-                    }
-
-                return nSum;
+                // Sum of all positive elements
+                if (i > 0)
+                {
+                    nSum += i;
+                }
             }
-            else
-            {
-                return -1;
-            }            
+
+            return nSum;
         }
     }
 }
