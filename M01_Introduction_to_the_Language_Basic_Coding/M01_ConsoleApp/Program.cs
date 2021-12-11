@@ -44,7 +44,7 @@ namespace M01_ConsoleApp
             Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
             Console.WriteLine("\r\n");
 
-            arrArrayToSort = ArrayBubbelSort.BubbelSortAsc(arrArrayToSort);
+            arrArrayToSort = ArrayBubbleSort.BubbleSortAsc(arrArrayToSort);
             Console.WriteLine("After sort\r");
             Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
             Console.WriteLine("\r\n");
@@ -59,7 +59,7 @@ namespace M01_ConsoleApp
             Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
             Console.WriteLine("\r\n");
 
-            arrArrayToSort = ArrayBubbelSort.BubbelSortDesc(arrArrayToSort);
+            arrArrayToSort = ArrayBubbleSort.BubbelSortDesc(arrArrayToSort);
             Console.WriteLine("After sort\r");
             Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
             Console.WriteLine("\r\n");

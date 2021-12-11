@@ -1,13 +1,13 @@
 ﻿namespace ArrayHelper
 {
-    public static class ArrayBubbelSort
+    public static class ArrayBubbleSort
     {
         /// <summary>
         /// Sort ascending one-dimension array
         /// </summary>
         /// <param name="arrA">Unsorted one-dimetional array</param>
         /// <returns>Sorted ascending one-dimension array </returns>
-        public static int[] BubbelSortAsc(int[] arrA)
+        public static int[] BubbleSortAsc(int[] arrA)
         {
             arrA = SortArray(arrA, true);
 
@@ -19,7 +19,7 @@
         /// </summary>
         /// <param name="arrA">Unsorted one-dimetional array</param>
         /// <returns>Sorted descending one-dimension array </returns>
-        public static int[] BubbelSortDesc(int[] arrA)
+        public static int[] BubbleSortDesc(int[] arrA)
         {
             arrA = SortArray(arrA, false);
 
