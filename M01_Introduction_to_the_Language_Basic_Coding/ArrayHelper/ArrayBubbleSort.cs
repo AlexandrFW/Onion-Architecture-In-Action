@@ -1,4 +1,6 @@
-﻿namespace ArrayHelper
+﻿using System;
+
+namespace ArrayHelper
 {
     public static class ArrayBubbleSort
     {
@@ -28,6 +30,9 @@
 
         private static int[] SortArray(int[] arrA, bool isAsc)
         {
+            if (arrA is null)
+                throw new NullReferenceException("Array cannot be NULL");
+
             for (int i = 0; i < arrA.Length; i++)
             {
                 for (int j = i + 1; j < arrA.Length; j++)
@@ -55,5 +60,7 @@
 
             return arrA;
         }
+
+
     }
 }
