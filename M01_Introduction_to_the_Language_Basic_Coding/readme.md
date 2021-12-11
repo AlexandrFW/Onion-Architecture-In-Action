@@ -2,20 +2,28 @@
 
 
 
-## Getting started
+## Tasks
+###Objective:
+Using .NET CLI (.NET5):
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+###Create a solution in a new folder
+Create a project - a class library (ArrayHelper)
+In that library implement a class, which allows to bubble-sort an array (both ASC/DESC). Note: do not use built-in sorting methods (like OrderBy, Sort, etc)
+In that library implement a class, which allows to calculate the sum of all positive elements in a two dimensional array
+Add necessary validations
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
+####Add ArrayHelper library to solution
+Create a project - a class library (RectangleHelper)
+In that library implement a class, which allows to calculate perimeter and square of a rectangle
+Add necessary validations
 
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:03ba1763bb594954d61f516d30d75b74?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:03ba1763bb594954d61f516d30d75b74?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:03ba1763bb594954d61f516d30d75b74?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/spb-net-laboratory-2021/2021q4/kutieva.git
-git branch -M main
-git push -uf origin main
-```
+####Add RectangleHelper library to solution
+Create a project - a console application, which demonstrates the functional of these two libraries
+Add to solution
+Build the solution
+Run console application
+
+Publish as self-contained assembly for Windows x64 and any other architecture of your choice (for example, ARM x86)
+Collect all used commands to the script
