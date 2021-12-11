@@ -34,7 +34,7 @@
                 {
                     if (isAsc)
                     {
-                        if (arrA[j] < arrA[i]) // Check if the next value is greater than the previous and change the place of each other
+                        if (arrA[j] < arrA[i]) 
                         {
                             var temp = arrA[i];
                             arrA[i] = arrA[j];
@@ -43,7 +43,7 @@
                     }
                     else
                     {
-                        if (arrA[j] > arrA[i]) // Check if the next value is less than the previous and change the place of each other
+                        if (arrA[j] > arrA[i]) 
                         {
                             var temp = arrA[i];
                             arrA[i] = arrA[j];
