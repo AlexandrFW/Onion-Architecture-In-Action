@@ -13,7 +13,7 @@ namespace ArrayHelper
         public static int SumAllPositiveElementsOfTwoDimensionalArray(int[,] arrTwoDimensionalArray)
         {
             if (arrTwoDimensionalArray is null)
-                return -1;
+                throw new ArgumentNullException("A two-dimensional array cannot be NULL");
 
             int nSum = 0;
 

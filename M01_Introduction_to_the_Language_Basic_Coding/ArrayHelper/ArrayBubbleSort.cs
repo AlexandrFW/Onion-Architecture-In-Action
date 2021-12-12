@@ -31,7 +31,7 @@ namespace ArrayHelper
         private static int[] SortArray(int[] arrA, bool isAsc)
         {
             if (arrA is null)
-                throw new ArgumentNullException("Array cannot be NULL");
+                throw new ArgumentNullException("An array cannot be NULL");
 
             for (int i = 0; i < arrA.Length; i++)
             {
