@@ -35,10 +35,6 @@ namespace RectangleHelper
             // Validation if negative value given 
             if (nFirstSideLength < 0 || nSecondSideLength < 0)
                 throw new ArgumentException("The first side or the second side of the given rectangle should not be negative");
-
-            // Validation if Int32.MaxValue values given
-            if (nFirstSideLength == Int32.MaxValue || nSecondSideLength == Int32.MaxValue)
-                throw new ArithmeticException("The first side or the second side of the given rectangle should not be Int32.MaxValue due to arithmetic overlow");
         }
     }
 }
