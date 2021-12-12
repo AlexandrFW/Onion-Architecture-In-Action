@@ -78,10 +78,7 @@ namespace M01_ConsoleApp
             int nSumAllPositiveElements = ArrayCalc.SumAllPositiveElementsOfTwoDimensionalArray(arrTwoDimentionalArray);
 
             // Print the sum if a two-dimensional array has been given
-            if (nSumAllPositiveElements > 0)
-                Console.WriteLine($"Sum of all positive elements of presented two dimension array is { nSumAllPositiveElements } \r\n");
-            else
-                Console.WriteLine($"Warning { nSumAllPositiveElements }: there is no any two-dimensional array has given \r\n");
+            Console.WriteLine($"Sum of all positive elements of presented two dimension array is { nSumAllPositiveElements } \r\n");
 
             Console.WriteLine("\r\n");
             Console.WriteLine("\r\n");
