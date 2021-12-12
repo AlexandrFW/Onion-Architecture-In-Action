@@ -12,7 +12,7 @@ namespace RectangleHelper
         /// <returns>Calculated perimeter of a rectangle</returns>
         public static int RectanglePerimeterCalc(int nFirstSideLength, int nSecondSideLength)
         {
-            ValidationParameters(nFirstSideLength, nSecondSideLength);
+            ParametersValidation(nFirstSideLength, nSecondSideLength);
 
             return (nFirstSideLength + nSecondSideLength) * 2; 
         }
@@ -25,12 +25,12 @@ namespace RectangleHelper
         /// <returns>Calculated square of a rectangle</returns>
         public static int RectangleSquareCalc(int nFirstSideLength, int nSecondSideLength)
         {
-            ValidationParameters(nFirstSideLength, nSecondSideLength);
+            ParametersValidation(nFirstSideLength, nSecondSideLength);
 
             return nFirstSideLength * nSecondSideLength;
         }
 
-        private static void ValidationParameters(int nFirstSideLength, int nSecondSideLength)
+        private static void ParametersValidation(int nFirstSideLength, int nSecondSideLength)
         {
             // Validation if negative value given 
             if (nFirstSideLength < 0 || nSecondSideLength < 0)
