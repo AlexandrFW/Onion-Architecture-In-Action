@@ -1,4 +1,6 @@
-﻿namespace RectangleHelper
+﻿using System;
+
+namespace RectangleHelper
 {
     public static class RectangleCalc
     {
@@ -10,9 +12,9 @@
         /// <returns>Calculated perimeter of a rectangle</returns>
         public static int RectanglePerimeterCalc(int nFirstSideLength, int nSecondSideLength)
         {
-            int nPerimeter = (nFirstSideLength + nSecondSideLength) * 2;
+            ValidationParameters(nFirstSideLength, nSecondSideLength);
 
-            return nPerimeter;
+            return (nFirstSideLength + nSecondSideLength) * 2; 
         }
 
         /// <summary>
@@ -23,9 +25,20 @@
         /// <returns>Calculated square of a rectangle</returns>
         public static int RectangleSquareCalc(int nFirstSideLength, int nSecondSideLength)
         {
-            int nSquare = nFirstSideLength * nSecondSideLength;
+            ValidationParameters(nFirstSideLength, nSecondSideLength);
 
-            return nSquare;
+            return nFirstSideLength * nSecondSideLength;
+        }
+
+        private static void ValidationParameters(int nFirstSideLength, int nSecondSideLength)
+        {
+            // Validation if negative value given 
+            if (nFirstSideLength < 0 || nSecondSideLength < 0)
+                throw new ArgumentException("The first side or the second side of the given rectangle should not be negative");
+
+            // Validation if Int32.MaxValue values given
+            if (nFirstSideLength == Int32.MaxValue || nSecondSideLength == Int32.MaxValue)
+                throw new ArithmeticException("The first side or the second side of the given rectangle should not be Int32.MaxValue due to arithmetic overlow");
         }
     }
 }
