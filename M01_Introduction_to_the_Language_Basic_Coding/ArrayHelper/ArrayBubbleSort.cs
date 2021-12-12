@@ -31,7 +31,7 @@ namespace ArrayHelper
         private static int[] SortArray(int[] arrA, bool isAsc)
         {
             if (arrA is null)
-                throw new NullReferenceException("Array cannot be NULL");
+                throw new ArgumentNullException("Array cannot be NULL");
 
             for (int i = 0; i < arrA.Length; i++)
             {
@@ -39,21 +39,13 @@ namespace ArrayHelper
                 {
                     if (isAsc)
                     {
-                        if (arrA[j] < arrA[i]) 
-                        {
-                            var temp = arrA[i];
-                            arrA[i] = arrA[j];
-                            arrA[j] = temp;
-                        }
+                        if (arrA[j] < arrA[i])
+                            RearrangeArrayElements(ref arrA[i], ref arrA[j]);
                     }
                     else
                     {
                         if (arrA[j] > arrA[i]) 
-                        {
-                            var temp = arrA[i];
-                            arrA[i] = arrA[j];
-                            arrA[j] = temp;
-                        }
+                            RearrangeArrayElements(ref arrA[i], ref arrA[j]);
                     }
                 }
             }
@@ -61,6 +53,11 @@ namespace ArrayHelper
             return arrA;
         }
 
-
+        private static void RearrangeArrayElements(ref int x, ref int y)
+        {
+            var temp = x;
+            x = y;
+            y = temp;
+        }
     }
 }
