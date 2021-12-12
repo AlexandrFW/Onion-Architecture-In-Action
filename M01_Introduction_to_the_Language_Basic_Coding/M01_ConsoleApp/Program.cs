@@ -90,8 +90,8 @@ namespace M01_ConsoleApp
             Console.WriteLine("Start using RectangleHelper to show how the Bubble sort work.");
             Console.WriteLine("\r\n");
 
-            int nFirstSideOfRectangle = 23;
-            int nSecondSideOfRecangle = 35;
+            int nFirstSideOfRectangle = 23; //
+            int nSecondSideOfRecangle = 35; // Int32.MaxValue - 10 -> this expression will caugth by checked expression in the first method which try to calculate something 
 
             Console.WriteLine("Rectangle parameters:");
             Console.WriteLine($"First side length: { nFirstSideOfRectangle }");

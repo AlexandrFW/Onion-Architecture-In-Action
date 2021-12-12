@@ -14,7 +14,7 @@ namespace RectangleHelper
         {
             ParametersValidation(nFirstSideLength, nSecondSideLength);
 
-            return (nFirstSideLength + nSecondSideLength) * 2; 
+            return checked((nFirstSideLength + nSecondSideLength) * 2); 
         }
 
         /// <summary>
@@ -27,7 +27,7 @@ namespace RectangleHelper
         {
             ParametersValidation(nFirstSideLength, nSecondSideLength);
 
-            return nFirstSideLength * nSecondSideLength;
+            return checked(nFirstSideLength * nSecondSideLength);
         }
 
         private static void ParametersValidation(int nFirstSideLength, int nSecondSideLength)
