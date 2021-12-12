@@ -39,14 +39,14 @@ namespace M01_ConsoleApp
 
             Console.WriteLine("Create an array of integers and sort it ascending using the Bubble sort\r\n");
 
-            int[] arrArrayToSort = new int[] { 2, 4, 1, 3, 8, 5, 7, 6, 9, 0 };
+            int[] arrArrayToSortAsc = new int[] { 2, 4, 1, 3, 8, 5, 7, 6, 9, 0 };
             Console.WriteLine("Before sort\r");
-            Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
+            Console.Write("[{0}]", string.Join(", ", arrArrayToSortAsc));
             Console.WriteLine("\r\n");
 
-            arrArrayToSort = ArrayBubbleSort.BubbleSortAsc(arrArrayToSort);
+            arrArrayToSortAsc = ArrayBubbleSort.BubbleSortAsc(arrArrayToSortAsc);
             Console.WriteLine("After sort\r");
-            Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
+            Console.Write("[{0}]", string.Join(", ", arrArrayToSortAsc));
             Console.WriteLine("\r\n");
             Console.WriteLine("Array arrArrayToSort has been sorted ascending");
 
@@ -54,14 +54,14 @@ namespace M01_ConsoleApp
 
             Console.WriteLine("Create an array of integers and sort it descending using the Bubble sort\r\n");
 
-            arrArrayToSort = new int[] { 2, 4, 1, 3, 8, 5, 7, 6, 9, 0 };
+            int[] arrArrayToSortDesc = new int[] { 2, 4, 1, 3, 8, 5, 7, 6, 9, 0 };
             Console.WriteLine("Before sort\r");
-            Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
+            Console.Write("[{0}]", string.Join(", ", arrArrayToSortDesc));
             Console.WriteLine("\r\n");
 
-            arrArrayToSort = ArrayBubbleSort.BubbleSortDesc(arrArrayToSort);
+            arrArrayToSortDesc = ArrayBubbleSort.BubbleSortDesc(arrArrayToSortDesc);
             Console.WriteLine("After sort\r");
-            Console.Write("[{0}]", string.Join(", ", arrArrayToSort));
+            Console.Write("[{0}]", string.Join(", ", arrArrayToSortDesc));
             Console.WriteLine("\r\n");
             Console.WriteLine("Array arrArrayToSort has been sorted descending");
 
