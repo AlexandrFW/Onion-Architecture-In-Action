@@ -8,7 +8,7 @@ namespace Performance
 
         public int CompareTo(object obj)
         {
-            C c = (C)obj;
+            var c = (C)obj;
             return _i.CompareTo(c._i);
         }
     }

@@ -13,9 +13,9 @@ namespace Performance
 
             Console.WriteLine("Task 2\r\n");
 
-            Random rnd = new();
+            var rnd = new Random();
 
-            Process proc = Process.GetCurrentProcess();
+            var proc = Process.GetCurrentProcess();
 
             var timer = new Stopwatch();
 
@@ -26,7 +26,7 @@ namespace Performance
             proc.Refresh();
             long lMemoryUsageBefore = proc.PrivateMemorySize64;
 
-            C[] arrC = new C[ArraysDimension];
+            var arrC = new C[ArraysDimension];
            
             Console.WriteLine($"Memory usage before array of C classes initialization = { lMemoryUsageBefore }");           
 
@@ -58,7 +58,7 @@ namespace Performance
             proc.Refresh();
             lMemoryUsageBefore = proc.PrivateMemorySize64;
 
-            S[] arrS = new S[ArraysDimension];
+            var arrS = new S[ArraysDimension];
             
             Console.WriteLine($"Memory usage before array of S structs initialization = { lMemoryUsageBefore }");
 

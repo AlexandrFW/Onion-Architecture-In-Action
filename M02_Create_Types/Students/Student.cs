@@ -13,7 +13,7 @@ namespace Students
         public Student(string email)
         {
             if (string.IsNullOrEmpty(email))
-                throw new ArgumentNullException("email argument should not be null or empty");
+                throw new ArgumentException("email argument should not be null or empty");
 
             Email = CapitalizedNameAndSurnameInEmailAddress(email);
             FullName = GetFullNameFromEmail(email);
@@ -22,10 +22,10 @@ namespace Students
         public Student(string name, string surname)
         {
             if (string.IsNullOrEmpty(name))
-                throw new ArgumentNullException("name argument should not be null or empty");
+                throw new ArgumentException("name argument should not be null or empty");
 
             if (string.IsNullOrEmpty(surname))
-                throw new ArgumentNullException("surname argument should not be null or empty");
+                throw new ArgumentException("surname argument should not be null or empty");
 
             // Capitalized the first letter of a name and a surname
             string name_local = char.ToUpper(name[0]) + name.Substring(1);
