@@ -21,7 +21,7 @@ namespace Students
 
             string[] subjects = { "Information Technology", "PE", "Math", "Music", "History", "Art"};
 
-            Dictionary<Student, HashSet<string>> studentSubjectDict = new Dictionary<Student, HashSet<string>>();
+            var studentSubjectDict = new Dictionary<Student, HashSet<string>>();
             studentSubjectDict[student1c1] = new HashSet<string>() { subjects[new Random().Next(0, 5)], subjects[new Random().Next(0, 5)], subjects[new Random().Next(0, 5)] };
             studentSubjectDict[student2c1] = new HashSet<string>() { subjects[new Random().Next(0, 5)], subjects[new Random().Next(0, 5)], subjects[new Random().Next(0, 5)] };
             studentSubjectDict[student3c1] = new HashSet<string>() { subjects[new Random().Next(0, 5)], subjects[new Random().Next(0, 5)], subjects[new Random().Next(0, 5)] };
