@@ -5,4 +5,9 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="bin\Debug\net5.0\numbers.txt" />
+    <Content Include="bin\Debug\net5.0\text.txt" />
+  </ItemGroup>
+
 </Project>

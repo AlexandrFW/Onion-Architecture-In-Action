@@ -13,7 +13,7 @@ namespace WorkWithStringsConsoleApp
         public static double CalculateAverageWordsLength(string sPhrase)
         {
             if (string.IsNullOrWhiteSpace(sPhrase))
-                throw new ArgumentException("Error! Parameter cannot be null or whitespace...");
+                throw new ArgumentException("Parameter cannot be null or whitespace");
 
             var arrChars = sPhrase.ToCharArray();
             for (int i = 0; i < arrChars.Length; i++)

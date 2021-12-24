@@ -15,14 +15,14 @@ namespace WorkWithStringsConsoleApp
         public static string CalcSumOfTwoBigNumbers(string sFirstBigNum, string sSecondBigNum)
         {
 			if (string.IsNullOrWhiteSpace(sFirstBigNum))
-				throw new ArgumentException("Error! Parameter sFirstBigNum cannot be null or whitespace...");
+				throw new ArgumentException("Parameter sFirstBigNum cannot be null or whitespace");
 
 			if (string.IsNullOrWhiteSpace(sSecondBigNum))
-				throw new ArgumentException("Error! Parameter sSecondBigNum cannot be null or whitespace...");
+				throw new ArgumentException("Parameter sSecondBigNum cannot be null or whitespace");
 
-			var sum = new StringBuilder();
+            var sum = new StringBuilder();
 
-			int carry = 0;
+            int carry = 0;
 
 			if (sFirstBigNum.Length != sSecondBigNum.Length)
 			{
@@ -33,6 +33,12 @@ namespace WorkWithStringsConsoleApp
 
 			for (int i = sFirstBigNum.Length - 1; i >= 0; i--)
 			{
+				if (!char.IsDigit(sFirstBigNum[i]))
+					throw new Exception($"Char \'{ sFirstBigNum[i] }\' in the sFirstBigNum at index { i } is not a digit");
+
+				if (!char.IsDigit(sSecondBigNum[i]))
+					throw new Exception($"Char \'{ sSecondBigNum[i] }\' in the sSecondBigNum at index { i } is not a digit");
+
 				var digitSum = (sFirstBigNum[i] - '0') + (sSecondBigNum[i] - '0') + carry;
 
 				if (digitSum > 9)

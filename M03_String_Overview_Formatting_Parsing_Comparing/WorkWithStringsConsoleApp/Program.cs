@@ -47,7 +47,7 @@ namespace WorkWithStringsConsoleApp
             Console.WriteLine();
             Console.WriteLine($"Data from file -> { sFilePath }");
             Console.WriteLine(ExtractPhoneNumber.GetDataFromTextFile());
-            ExtractPhoneNumber.ExtractAndWriteNumbersToSpecialFile();    // Process raw text data to find all phone number by predefined templates
+            ExtractPhoneNumber.ExtractAndWriteNumbersToFile();    // Process raw text data to find all phone number by predefined templates
             Console.WriteLine();
             Console.WriteLine($"Get all found phone numbers");
             Console.WriteLine(ExtractPhoneNumber.GetExtractedPhoneNumbers());

@@ -1,22 +1,14 @@
 ﻿using System;
 using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace WorkWithStringsConsoleApp
 {
     internal static class ExtractPhoneNumber
     {
-        private static string _data_for_text_file =
-            "Bla bla bla my number is +7 (921) 345-67-89 kekeke" + "\r\n" +
-            "Blo Blo blo +375 (34) 444-7843 ololo";
-
         private static readonly string _s_path = Environment.CurrentDirectory + @"\text.txt";
         private static readonly string _s_path_for_numbers = Environment.CurrentDirectory + @"\numbers.txt";
-
-        static ExtractPhoneNumber()
-        {
-            // Write predefined demo data to the text.txt file
-            CreateAndFillTextFile(_s_path, _data_for_text_file);
-        }
 
         private static void CreateAndFillTextFile(string sPath, string data)
         { 
@@ -40,39 +32,21 @@ namespace WorkWithStringsConsoleApp
         /// <summary>
         /// This method extract phone numbers with accordance predefined templates
         /// </summary>
-        public static void ExtractAndWriteNumbersToSpecialFile()
+        public static void ExtractAndWriteNumbersToFile()
         {
             var sData = GetRawData(_s_path);
 
-            var arr = sData.ToCharArray();
-            var s = "";
+            var r = new Regex(@"\+?\d{0,3}([\-\.\s]?)([\(\s])\d{0,3}([\)\s])([\-\.\s]?)\d{0,4}([\-\.\s]?)\d{0,8}([\-\.\s]?)\d{0,3}", RegexOptions.Multiline);
+            var sResultBuilder = new StringBuilder();
 
-            for (int i = 0; i < arr.Length; i++)
+            var matches = r.Matches(sData);
+            foreach(var match in matches)
             {
-                if (char.IsDigit(arr[i]))
-                    s += arr[i];
-
-                if (arr[i] == '\r')
-                    s += ";";
-            }
-
-            var arrNumbers = s.Split(';');
-            var sResult = "";
-            foreach (var item in arrNumbers)
-            {
-                if (!string.IsNullOrWhiteSpace(item))
-                {
-                    sResult += item.Substring(0, 1) switch
-                    {
-                        "7" => string.Format("{0:+# (###) ###-####}", Convert.ToInt64(item)),
-                        "3" => string.Format("{0:+### (##) ###-####}", Convert.ToInt64(item)),
-                        _ => "\r\n",
-                    };
-                }
+                sResultBuilder.Append((match as Match).Value);
             }
 
             // Write extracted phone numbers to the Numbers.txt file
-            CreateAndFillTextFile(_s_path_for_numbers, sResult);
+            CreateAndFillTextFile(_s_path_for_numbers, sResultBuilder.ToString());
         }
 
         /// <summary>

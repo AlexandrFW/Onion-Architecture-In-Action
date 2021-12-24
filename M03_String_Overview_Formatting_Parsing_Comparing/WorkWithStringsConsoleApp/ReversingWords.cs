@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace WorkWithStringsConsoleApp
 {
@@ -17,13 +18,13 @@ namespace WorkWithStringsConsoleApp
 
             var arrWords = sSourceString.Split(' ');
 
-            string sResult = "";
+            var sResult = new StringBuilder();
             for(int i = arrWords.Length - 1; i >= 0; i--)
             {
-                sResult += arrWords[i] + " ";
+                sResult.Append(arrWords[i] + " ");
             }
 
-            return sResult.Trim();
+            return sResult.ToString().Trim();
         }
     }
 }

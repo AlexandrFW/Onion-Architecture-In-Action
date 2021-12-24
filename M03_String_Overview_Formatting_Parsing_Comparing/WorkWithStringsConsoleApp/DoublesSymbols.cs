@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
 namespace WorkWithStringsConsoleApp
 {
@@ -14,34 +16,23 @@ namespace WorkWithStringsConsoleApp
         public static string DoublesAllSymbolsInFirstStringIfContainsInSecond(string sFirstString, string sSecondString)
         {
             if (string.IsNullOrWhiteSpace(sFirstString))
-                throw new ArgumentException("Error! Parameter sFirstString cannot be null or whitespace...");
+                throw new ArgumentException("Parameter sFirstString cannot be null or whitespace");
 
             if (string.IsNullOrWhiteSpace(sSecondString))
-                throw new ArgumentException("Error! Parameter sSecondString cannot be null or whitespace...");
+                throw new ArgumentException("Parameter sSecondString cannot be null or whitespace");
 
-            var arrCharsOfSecondStrings = sSecondString.ToCharArray();
-
-            string sResult = sFirstString;
-            var arrCharsOfFirstStrings = sResult.ToCharArray(); 
+            var hashSetOfSecondStringChars = new HashSet<char>(sSecondString.ToCharArray());
 
             int i = 0;
-
-            while(i < arrCharsOfFirstStrings.Length)
+            var resultStringBuilder = new StringBuilder(sFirstString.Trim());
+            while (i < resultStringBuilder.Length)
             {
-                if (arrCharsOfFirstStrings[i] != ' ')
+                if (resultStringBuilder[i] != ' ')
                 {
-                    for (int j = 0; j < arrCharsOfSecondStrings.Length; j++)
+                    if (hashSetOfSecondStringChars.Contains(resultStringBuilder[i]))
                     {
-                        if (arrCharsOfSecondStrings[j] != ' ')
-                        {
-                            if (arrCharsOfFirstStrings[i] == arrCharsOfSecondStrings[j])
-                            {
-                                i++;
-                                sResult = sResult.Insert(i, arrCharsOfSecondStrings[j].ToString());
-                                arrCharsOfFirstStrings = sResult.ToCharArray();
-                                break;
-                            }
-                        }
+                        resultStringBuilder.Insert(i + 1, resultStringBuilder[i]);
+                        i++;
                     }
                 }
                 else i++;
@@ -49,7 +40,7 @@ namespace WorkWithStringsConsoleApp
                 i++;
             }
 
-            return sResult;
+            return resultStringBuilder.ToString().Trim();
         }
     }
 }
