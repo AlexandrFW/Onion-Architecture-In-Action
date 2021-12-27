@@ -61,21 +61,6 @@ namespace WorkWithStringsConsoleApp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to +7 (921) 345-67-89
-        ///+375 (34) 444-7843 
-        ///+44 (0) 20 73238000 
-        ///+1 (520) 254-5443 
-        ///+91 (11) 4242-8002 
-        ///+65 (812) 12-345 
-        ///+60 3 71234567 .
-        /// </summary>
-        internal static string numbers {
-            get {
-                return ResourceManager.GetString("numbers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bla bla bla my number is +7 (921) 345-67-89 kekeke
         ///Blo Blo blo +375 (34) 444-7843 ololo
         ///Bla bla bla my number is +44 (0) 20 73238000 kekeke
