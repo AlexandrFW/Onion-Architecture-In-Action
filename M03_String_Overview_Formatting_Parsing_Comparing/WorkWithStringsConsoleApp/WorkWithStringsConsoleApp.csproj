@@ -6,8 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="bin\Debug\net5.0\numbers.txt" />
-    <Content Include="bin\Debug\net5.0\text.txt" />
+    <Compile Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\text.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +28,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>
