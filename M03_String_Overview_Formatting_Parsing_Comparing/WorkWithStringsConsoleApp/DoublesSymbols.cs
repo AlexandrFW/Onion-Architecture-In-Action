@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace WorkWithStringsConsoleApp
@@ -16,10 +17,10 @@ namespace WorkWithStringsConsoleApp
         public static string DoublesAllSymbolsInFirstStringIfContainsInSecond(string sFirstString, string sSecondString)
         {
             if (string.IsNullOrWhiteSpace(sFirstString))
-                throw new ArgumentException("Parameter sFirstString cannot be null or whitespace");
+                throw new ArgumentException($"Parameter { nameof(sFirstString) } cannot be null or whitespace");
 
             if (string.IsNullOrWhiteSpace(sSecondString))
-                throw new ArgumentException("Parameter sSecondString cannot be null or whitespace");
+                throw new ArgumentException($"Parameter { nameof(sFirstString) } cannot be null or whitespace");
 
             var hashSetOfSecondStringChars = new HashSet<char>(sSecondString.ToCharArray());
 
