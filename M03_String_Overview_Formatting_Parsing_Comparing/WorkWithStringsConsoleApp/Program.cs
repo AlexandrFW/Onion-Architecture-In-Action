@@ -42,10 +42,9 @@ namespace WorkWithStringsConsoleApp
             Console.WriteLine();
 
             Console.WriteLine("Task #5. Create file with temp string data and extract phone numbers from it");
-            var sFilePath = Environment.CurrentDirectory + @"\text.txt";
-            Console.WriteLine($"Working directory where all needed files will bee created  \"{ sFilePath }\"");
+            Console.WriteLine($"Working with files where located in the AppResources file");
             Console.WriteLine();
-            Console.WriteLine($"Data from file -> { sFilePath }");
+            Console.WriteLine($"Data from file -> Application resource file");
             Console.WriteLine(ExtractPhoneNumber.GetDataFromTextFile());
             ExtractPhoneNumber.ExtractAndWriteNumbersToFile();    // Process raw text data to find all phone number by predefined templates
             Console.WriteLine();
