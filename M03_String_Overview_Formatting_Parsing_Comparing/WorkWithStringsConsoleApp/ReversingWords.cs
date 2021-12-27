@@ -14,7 +14,7 @@ namespace WorkWithStringsConsoleApp
         public static string ReverseWords(string sSourceString)
         {
             if (string.IsNullOrWhiteSpace(sSourceString))
-                throw new ArgumentException("Error! Parameter sSourceString cannot be null or whitespace...");
+                throw new ArgumentException($"Parameter { nameof(sSourceString) } cannot be null or whitespace...");
 
             var arrWords = sSourceString.Split(' ');
 

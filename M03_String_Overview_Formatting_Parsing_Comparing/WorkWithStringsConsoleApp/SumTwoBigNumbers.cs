@@ -15,10 +15,10 @@ namespace WorkWithStringsConsoleApp
         public static string CalcSumOfTwoBigNumbers(string sFirstBigNum, string sSecondBigNum)
         {
 			if (string.IsNullOrWhiteSpace(sFirstBigNum))
-				throw new ArgumentException("Parameter sFirstBigNum cannot be null or whitespace");
+				throw new ArgumentException($"Parameter { nameof(sFirstBigNum) } cannot be null or whitespace");
 
 			if (string.IsNullOrWhiteSpace(sSecondBigNum))
-				throw new ArgumentException("Parameter sSecondBigNum cannot be null or whitespace");
+				throw new ArgumentException($"Parameter { nameof(sSecondBigNum) } cannot be null or whitespace");
 
             var sum = new StringBuilder();
 
