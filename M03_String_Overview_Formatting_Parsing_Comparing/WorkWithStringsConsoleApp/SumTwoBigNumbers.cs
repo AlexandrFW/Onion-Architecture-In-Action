@@ -3,7 +3,7 @@ using System;
 
 namespace WorkWithStringsConsoleApp
 {
-    internal static class SumTwoBigNumbers
+    public static class SumTwoBigNumbers
     {
 		/// <summary>
 		/// Calculate sum of two Big numbers presented as strings
