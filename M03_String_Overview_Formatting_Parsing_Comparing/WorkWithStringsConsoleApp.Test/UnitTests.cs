@@ -41,15 +41,8 @@ namespace WorkWithStringsConsoleApp.Test
 
         [Test]
         [TestCase("", "o kek")]
-        public void M03_Task_2_Doubled_Charcters_Should_Throws_ArgumentException_If_First_String_Empty(string sFirstString, string sSecondString)
-        {
-            // Assert
-            Assert.That(() => DoublesSymbols.DoublesAllSymbolsInFirstStringIfContainsInSecond(sFirstString, sSecondString), Throws.ArgumentException);
-        }
-
-        [Test]
         [TestCase("omg i love shrek", "")]
-        public void M03_Task_2_Doubled_Charcters_Should_Throws_ArgumentException_If_Second_String_Empty(string sFirstString, string sSecondString)
+        public void M03_Task_2_Doubled_Charcters_Should_Throws_ArgumentException_If_First_Or_Second_String_Empty(string sFirstString, string sSecondString)
         {
             // Assert
             Assert.That(() => DoublesSymbols.DoublesAllSymbolsInFirstStringIfContainsInSecond(sFirstString, sSecondString), Throws.ArgumentException);
@@ -68,15 +61,8 @@ namespace WorkWithStringsConsoleApp.Test
 
         [Test]
         [TestCase("", "18446744073709551615")]
-        public void M03_Task_4_Sum_Of_Two_Big_Numbers_In_String_Format_Should_Throws_ArgumentException_If_First_String_Empty(string sFirstBigNum, string sSecondBigNum)
-        {
-            // Assert
-            Assert.That(() => SumTwoBigNumbers.CalcSumOfTwoBigNumbers(sFirstBigNum, sSecondBigNum), Throws.ArgumentException);
-        }
-
-        [Test]
         [TestCase("18446744073709551615", "")]
-        public void M03_Task_4_Sum_Of_Two_Big_Numbers_In_String_Format_Should_Throws_ArgumentException_If_Second_String_Empty(string sFirstBigNum, string sSecondBigNum)
+        public void M03_Task_4_Sum_Of_Two_Big_Numbers_In_String_Format_Should_Throws_ArgumentException_If_First_Or_Second_String_Empty(string sFirstBigNum, string sSecondBigNum)
         {
             // Assert
             Assert.That(() => SumTwoBigNumbers.CalcSumOfTwoBigNumbers(sFirstBigNum, sSecondBigNum), Throws.ArgumentException);
