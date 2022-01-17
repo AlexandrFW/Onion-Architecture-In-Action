@@ -2,7 +2,7 @@
 
 namespace WorkWithStringsConsoleApp
 {
-    internal static class AverageWordsLength
+    public static class AverageWordsLength
     {
         /// <summary>
         /// Calculate an average of all words of given string without eliminating punctuation symbols

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace WorkWithStringsConsoleApp
 {
-    internal static class ReversingWords
+    public static class ReversingWords
     {
         /// <summary>
         /// Reverse all words in a given sentance
