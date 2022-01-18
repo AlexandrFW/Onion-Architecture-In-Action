@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPConcept", "OOPConcept\OOPConcept.csproj", "{A225CFDE-1DFB-478B-B174-37C4640FDB43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GeometryPrimitivesHierarchyLibrary", "GeometryPrimitivesHierarchyLibrary\GeometryPrimitivesHierarchyLibrary.csproj", "{45FC4820-3D95-40C0-AA47-EBFA7E7C55B2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A225CFDE-1DFB-478B-B174-37C4640FDB43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A225CFDE-1DFB-478B-B174-37C4640FDB43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A225CFDE-1DFB-478B-B174-37C4640FDB43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A225CFDE-1DFB-478B-B174-37C4640FDB43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45FC4820-3D95-40C0-AA47-EBFA7E7C55B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45FC4820-3D95-40C0-AA47-EBFA7E7C55B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45FC4820-3D95-40C0-AA47-EBFA7E7C55B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45FC4820-3D95-40C0-AA47-EBFA7E7C55B2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45227FD9-D713-4DB9-8C9C-510AE7423476}
+	EndGlobalSection
+EndGlobal
