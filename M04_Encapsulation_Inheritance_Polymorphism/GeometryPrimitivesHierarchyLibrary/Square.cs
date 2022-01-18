@@ -8,6 +8,9 @@ namespace GeometryPrimitivesHierarchyLibrary
 
         public Square(double SideLength)
         {
+            if (SideLength <= 0)
+                throw new ArgumentException($"{nameof(SideLength)} should not be less or equals Zero");
+
             this.SideLength = SideLength;
         }
 

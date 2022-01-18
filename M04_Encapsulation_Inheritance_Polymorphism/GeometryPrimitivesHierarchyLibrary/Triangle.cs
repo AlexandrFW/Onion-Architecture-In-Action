@@ -10,6 +10,15 @@ namespace GeometryPrimitivesHierarchyLibrary
 
         public Triangle(double FirstSideLength, double SecondSideLength, double ThirdSideLength)
         {
+            if (FirstSideLength <= 0)
+                throw new ArgumentException($"{nameof(FirstSideLength)} should not be less or equals Zero");
+
+            if (SecondSideLength <= 0)
+                throw new ArgumentException($"{nameof(SecondSideLength)} should not be less or equals Zero");
+
+            if (ThirdSideLength <= 0)
+                throw new ArgumentException($"{nameof(ThirdSideLength)} should not be less or equals Zero");
+
             this.FirstSideLength = FirstSideLength;
             this.SecondSideLength = SecondSideLength;
             this.ThirdSideLength = ThirdSideLength;

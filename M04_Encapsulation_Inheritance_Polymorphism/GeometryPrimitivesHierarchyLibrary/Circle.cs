@@ -8,6 +8,9 @@ namespace GeometryPrimitivesHierarchyLibrary
 
         public Circle(double nRadius)
         {
+            if (nRadius <= 0)
+                throw new ArgumentException("Radius should not be less or equals Zero");
+
             Radius = nRadius;
         }
 
