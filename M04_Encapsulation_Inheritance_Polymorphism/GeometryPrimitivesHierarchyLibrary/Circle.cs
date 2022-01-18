@@ -2,11 +2,11 @@
 
 namespace GeometryPrimitivesHierarchyLibrary
 {
-    public class Cycle : Shape
+    public class Circle : Shape
     {
         public double Radius { get; set; }
 
-        public Cycle(double nRadius)
+        public Circle(double nRadius)
         {
             Radius = nRadius;
         }

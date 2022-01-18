@@ -2,23 +2,13 @@
 
 namespace OOPConcept.GameElements.Monsters
 {
-    public class Wolve : Monster, IGameObject
+    public class Wolve : Monster
     {
-        Position _position;
-        ConsoleColor _color;
-
-        public Wolve(Position position, ConsoleColor color)
-        {
-            _position = position;
-            _color = color;
-        }
+        public Wolve(Position position, ConsoleColor color) : base(position, color) { }
 
         public override void Eat(Player player)
         {
             player.Die();
         }
-
-        public Position Position { get => _position; set => _position = value; }
-        public ConsoleColor Color { get => _color; }
     }
 }
