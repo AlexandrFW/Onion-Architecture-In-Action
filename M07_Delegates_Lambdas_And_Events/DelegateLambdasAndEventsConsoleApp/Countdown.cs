@@ -20,8 +20,6 @@ namespace DelegateLambdasAndEventsConsoleApp
         {
             Console.WriteLine("Please wait, counting down...");
 
-            for (int i = 500; i > 0; i--) { }
-
             Thread.Sleep(_delay);
 
             OnCounted(_message);

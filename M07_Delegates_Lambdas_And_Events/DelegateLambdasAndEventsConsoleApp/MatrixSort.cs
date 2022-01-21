@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Linq;
 
 namespace DelegateLambdasAndEventsConsoleApp
 {
     public static class MatrixSort
     {
-        public static void Sort(int[,] matrix, bool IsAsc, Func<int[], int[], int, bool, bool> compareMethod)
+        public static void Sort(int[,] matrix, bool isAsc, Func<int[], int[], bool, bool> compareMethod)
         {
             if (matrix == null)
                 throw new ArgumentException($"The { nameof(matrix)} should not be null");
@@ -21,14 +22,14 @@ namespace DelegateLambdasAndEventsConsoleApp
                 int[] row1 = GetMatrixRow(matrix, i, matrix.GetLength(1));
                 int[] row2 = GetMatrixRow(matrix, nNextRow, matrix.GetLength(1));
 
-                if (compareMethod(row1, row2, matrix.GetLength(1), IsAsc))
+                if (compareMethod(row1, row2, isAsc))
                 {
                     for (int j = 0; j < matrix.GetLength(1); j++)
                     {
                         matrix[i, j] = row2[j];
                         matrix[nNextRow, j] = row1[j];
                     }
-                    i = 0;
+                    i = -1;
                 }
             }
         }
@@ -42,7 +43,7 @@ namespace DelegateLambdasAndEventsConsoleApp
             return matrixRow;
         }
 
-        private static bool CheckArgumentsByNull(int[] row1, int[] row2, int nRowLength)
+        private static void CheckArgumentsByNull(int[] row1, int[] row2)
         {
             if (row1 == null)
                 throw new ArgumentException($"{nameof(row1)} should not be null");
@@ -55,11 +56,6 @@ namespace DelegateLambdasAndEventsConsoleApp
 
             if (row2.Length <= 0)
                 throw new ArgumentException($"{nameof(row2)} array should not be empty");
-
-            if (nRowLength <= 0)
-                throw new ArgumentException($"{nameof(nRowLength)} array length must be greater than zero");
-
-            return true;
         }
 
         /// <summary>
@@ -67,16 +63,15 @@ namespace DelegateLambdasAndEventsConsoleApp
         /// </summary>
         /// <param name="row1">Current row (one-dimensional array)</param>
         /// <param name="row2">Next row (one-dimensional array)</param>
-        /// <param name="nRowLength">Length of rows</param>
         /// <returns>Boolean representation of comparison action</returns>
-        public static bool CompareByRowSum(int[] row1, int[] row2, int nRowLength, bool IsAsc)
+        public static bool CompareByRowSum(int[] row1, int[] row2, bool isAsc)
         {
-            CheckArgumentsByNull(row1, row2, nRowLength);
+            CheckArgumentsByNull(row1, row2);
 
-            if (IsAsc)
-                return Sum(row1, nRowLength) < Sum(row2, nRowLength); 
+            if (isAsc)
+                return row1.Sum() > row2.Sum();
             else
-                return Sum(row1, nRowLength) > Sum(row2, nRowLength);
+                return row1.Sum() < row2.Sum();
         }
 
         /// <summary>
@@ -85,16 +80,15 @@ namespace DelegateLambdasAndEventsConsoleApp
         /// </summary>
         /// <param name="row1">Current row (one-dimensional array)</param>
         /// <param name="row2">Next row (one-dimensional array)</param>
-        /// <param name="nRowLength">Length of rows</param>
         /// <returns>Boolean representation of comparison action</returns>
-        public static bool CompareByRowMin(int[] row1, int[] row2, int nRowLength, bool IsAsc)
+        public static bool CompareByRowMin(int[] row1, int[] row2, bool isAsc)
         {
-            CheckArgumentsByNull(row1, row2, nRowLength);
+            CheckArgumentsByNull(row1, row2);
 
-            if (IsAsc)
-                return Min(row1, nRowLength) < Min(row2, nRowLength);
+            if (isAsc)
+                return row1.Min() > row2.Min();
             else
-                return Min(row1, nRowLength) > Min(row2, nRowLength);
+                return row1.Min() < row2.Min();
         }
 
         /// <summary>
@@ -103,52 +97,15 @@ namespace DelegateLambdasAndEventsConsoleApp
         /// </summary>
         /// <param name="row1">Current row (one-dimensional array)</param>
         /// <param name="row2">Next row (one-dimensional array)</param>
-        /// <param name="nRowLength">Length of rows</param>
         /// <returns>Boolean representation of comparison action</returns>
-        public static bool CompareByRowMax(int[] row1, int[] row2, int nRowLength, bool IsAsc)
+        public static bool CompareByRowMax(int[] row1, int[] row2, bool isAsc)
         {
-            CheckArgumentsByNull(row1, row2, nRowLength);
+            CheckArgumentsByNull(row1, row2);
 
-            if (IsAsc)
-                return Max(row1, nRowLength) < Max(row2, nRowLength);
+            if (isAsc)
+                return row1.Max() > row2.Max();
             else
-                return Max(row1, nRowLength) > Max(row2, nRowLength);
-        }
-
-        private static int Sum(int[] row, int nRowLength)
-        {
-            int n = 0;
-            for (nRowLength--; nRowLength >= 0; nRowLength--) n += row[nRowLength];
-
-            return n;
-        }
-
-        private static int Min(int[] row, int nRowLength)
-        {
-            int minm = row[nRowLength - 1];
-            for (nRowLength--; nRowLength >= 0; nRowLength--)
-            {
-                if (row[nRowLength] < minm)
-                {
-                    minm = row[nRowLength];
-                }
-            }
-
-            return minm;
-        }
-
-        private static int Max(int[] row, int nRowLength)
-        {
-            int minm = row[nRowLength - 1];
-            for (nRowLength--; nRowLength >= 0; nRowLength--)
-            {
-                if (row[nRowLength] > minm)
-                {
-                    minm = row[nRowLength];
-                }
-            }
-
-            return minm;
+                return row1.Max() < row2.Max();
         }
     }
 }
