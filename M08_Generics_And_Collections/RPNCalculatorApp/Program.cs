@@ -11,9 +11,9 @@ namespace RPNCalculatorApp
 
             while (true)  
             {
-                Console.WriteLine(RPN.CalculateReversePolishNotation("5 1 2 + 4 * + 3 -"));
-                Console.Write("Enter a standart expression: "); 
-                Console.WriteLine($"Result is {RPN.CalculateNormalExpresion(Console.ReadLine())}");                
+                Console.WriteLine(RPN.CalculateReversePolishNotation("5 1 2 + 4 * + 3 - +"));
+                Console.Write("Enter a reverse polish notation expression: "); 
+                Console.WriteLine($"Result is {RPN.CalculateReversePolishNotation(Console.ReadLine())}");                
 
                 Console.WriteLine("Press \"Y\" to continue or \"N\" to exit");
                 ConsoleKeyInfo key = Console.ReadKey();

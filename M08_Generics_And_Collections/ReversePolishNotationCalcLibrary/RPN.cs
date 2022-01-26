@@ -127,31 +127,38 @@ namespace ReversePolishNotationCalcLibrary
                 {
                     var a = string.Empty;
 
-                    while (!IsDelimeter(input[i]) && !IsOperator(input[i])) 
+                    while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
                     {
                         a += input[i]; // Add
                         i++;
-                        if (i == input.Length) 
+                        if (i == input.Length)
                             break;
                     }
-                    temp.Push(double.Parse(a)); 
+                    temp.Push(double.Parse(a));
                     i--;
                 }
                 else if (IsOperator(input[i])) // If operator
                 {
                     // Get the two last values from stack
-                    var a = temp.Pop();
-                    var b = temp.Pop();
-
-                    switch (input[i]) // process that values with accordance to an operator
+                    try
                     {
-                        case '+': result = b + a; break;
-                        case '-': result = b - a; break;
-                        case '*': result = b * a; break;
-                        case '/': result = b / a; break;
-                        case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        var a = temp.Pop();// : throw new InvalidOperationException("Operands is over. Nothing to operate. Check if your expression is correct");
+                        var b = temp.Pop();
+
+                        switch (input[i]) // process that values with accordance to an operator
+                        {
+                            case '+': result = b + a; break;
+                            case '-': result = b - a; break;
+                            case '*': result = b * a; break;
+                            case '/': result = b / a; break;
+                            case '^': result = double.Parse(Math.Pow(double.Parse(b.ToString()), double.Parse(a.ToString())).ToString()); break;
+                        }
+                        temp.Push(result);
                     }
-                    temp.Push(result);  
+                    catch (InvalidOperationException e)
+                    {
+                        throw new InvalidOperationException($"Operands {e.Message} Nothing to operate. Check if your expression is correct");
+                    }
                 }
             }
             return temp.Pop(); // Return results of all calculations
