@@ -27,10 +27,12 @@ namespace GenericsAndCollectionsExampleLibrary
             while (low <= high)
             {
                 mid = (high - low) / 2 + low;//(high + low) / 2;
-                if (comparer.Compare(array[mid], searchFor) == 0)
+                int nCompareResult = comparer.Compare(array[mid], searchFor);
+                
+                if (nCompareResult == 0)
                     return mid;
 
-                if (comparer.Compare(array[mid], searchFor) > 0)
+                if (nCompareResult > 0)
                     high = mid - 1;
                 else
                     low = mid + 1;
