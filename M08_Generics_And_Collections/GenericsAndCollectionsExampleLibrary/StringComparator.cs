@@ -2,7 +2,7 @@
 
 namespace GenericsAndCollectionsExampleLibrary
 {
-    public class ComparatorString : IComparer<string>
+    public class StringComparator : IComparer<string>
     {
         int IComparer<string>.Compare(string x, string y)
         {

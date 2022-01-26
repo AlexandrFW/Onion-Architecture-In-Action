@@ -5,27 +5,23 @@ namespace RPNCalculatorApp.Test
 {
     public class RPNTest
     {
-        
         [Test]
-        [TestCase("5 + ((1 + 2) * 4) - 3")] // 5 1 2 + 4 * 3 - +  result of privat method GetExpression(string input)       
-        public void Should_Return_14_From_Given_Expression(string expression)
+        [TestCase("5 + ((1 + 2) * 4) - 3", ExpectedResult = 14)] // 5 1 2 + 4 * 3 - +  result of privat method GetExpression(string input)
+        [TestCase("", ExpectedResult = 0)]
+        public double Should_Return_14_From_Given_Normal_Expression(string expression)
         {
-            // Assign
-            var nExpectedResult = 14;
-
             // Assert
-            Assert.That(RPN.Calculate(expression), Is.EqualTo(nExpectedResult));
+            return RPN.CalculateNormalExpresion(expression);
         }
 
         [Test]
-        [TestCase("")]
-        public void Should_Return_0_From_Given_Expression(string expression)
+        [TestCase("5 1 2 + 4 * + 3 -", ExpectedResult = 14)]  
+        [TestCase("5 1 2 + 4 * 3 - +", ExpectedResult = 14)]  
+        [TestCase("", ExpectedResult = 0)]
+        public double Should_Return_14_From_Given_RPN_Expression(string expression)
         {
-            // Assign
-            var nExpectedResult = 0;
-
             // Assert
-            Assert.That(RPN.Calculate(expression), Is.EqualTo(nExpectedResult));
+            return RPN.CalculateReversePolishNotation(expression);
         }
     }
 }

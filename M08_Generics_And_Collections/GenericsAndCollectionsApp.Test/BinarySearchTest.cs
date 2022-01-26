@@ -17,7 +17,7 @@ namespace GenericsAndCollectionsApp.Test
 
             // Act
             Array.Sort(arrString);
-            int result = GenericsExamples.BinarySearch(arrString, needToBeFound, new ComparatorString());
+            int result = GenericsExamples.BinarySearch(arrString, needToBeFound, new StringComparator());
 
             // Assert
             Assert.That(nIndexShouldBe, Is.EqualTo(result));
@@ -33,7 +33,7 @@ namespace GenericsAndCollectionsApp.Test
 
             // Act
             Array.Sort(arrInt);
-            int result = GenericsExamples.BinarySearch(arrInt, needToBeFound, new ComparatorInt());
+            int result = GenericsExamples.BinarySearch(arrInt, needToBeFound, new IntComparator());
 
             // Assert
             Assert.That(nIndexShouldBe, Is.EqualTo(result));
@@ -49,7 +49,7 @@ namespace GenericsAndCollectionsApp.Test
 
             // Act
             Array.Sort(arrInt);
-            int result = GenericsExamples.BinarySearch(arrInt, needToBeFound, new ComparatorInt());
+            int result = GenericsExamples.BinarySearch(arrInt, needToBeFound, new IntComparator());
 
             // Assert
             Assert.That(nIndexShouldBe, Is.EqualTo(result));
@@ -65,7 +65,23 @@ namespace GenericsAndCollectionsApp.Test
 
             // Act
             Array.Sort(arrInt);
-            int result = GenericsExamples.BinarySearch(arrInt, needToBeFound, new ComparatorInt());
+            int result = GenericsExamples.BinarySearch(arrInt, needToBeFound, new IntComparator());
+
+            // Assert
+            Assert.That(nIndexShouldBe, Is.EqualTo(result));
+        }
+
+        [Test]
+        public void Int_Array_BinarySearch_Should_Return_Value_As_Not_Found()
+        {
+            // Assign
+            var arrInt = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var needNotToBeFound = 12;
+            var nIndexShouldBe = -1;
+
+            // Act
+            Array.Sort(arrInt);
+            int result = GenericsExamples.BinarySearch(arrInt, needNotToBeFound, new IntComparator());
 
             // Assert
             Assert.That(nIndexShouldBe, Is.EqualTo(result));
@@ -79,14 +95,14 @@ namespace GenericsAndCollectionsApp.Test
             var needToBeFound = 9;
 
             // Assert
-            Assert.That(() => GenericsExamples.BinarySearch(arrInt, needToBeFound, null), Throws.ArgumentException);
+            Assert.That(() => GenericsExamples.BinarySearch(arrInt, needToBeFound, null), Throws.ArgumentNullException);
         }
 
         [Test]
         public void Int_Array_BinarySearch_Should_Throw_ArgumentException_If_Array_Is_Null()
         {
             // Assert
-            Assert.That(() => GenericsExamples.BinarySearch(null, 1, new ComparatorInt()), Throws.ArgumentException);
+            Assert.That(() => GenericsExamples.BinarySearch(null, 1, new IntComparator()), Throws.ArgumentNullException);
         }
     }
 }

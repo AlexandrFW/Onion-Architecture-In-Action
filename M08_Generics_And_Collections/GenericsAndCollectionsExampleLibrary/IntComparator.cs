@@ -2,7 +2,7 @@
 
 namespace GenericsAndCollectionsExampleLibrary
 {
-    public class ComparatorInt : IComparer<int>
+    public class IntComparator : IComparer<int>
     {
         public int Compare(int x, int y)
         {

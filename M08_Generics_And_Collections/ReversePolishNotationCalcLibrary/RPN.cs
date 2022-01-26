@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace ReversePolishNotationCalcLibrary
 {
@@ -39,19 +40,18 @@ namespace ReversePolishNotationCalcLibrary
             };
         }
 
-        public static double Calculate(string input)
+        public static double CalculateNormalExpresion(string input)
         {
             Console.WriteLine($"Reverse Polish Notation expresion is \"{GetExpression(input)}\"");
-            return Counting(GetExpression(input)); 
+            return CalculateReversePolishNotation(GetExpression(input)); 
         }
 
         private static string GetExpression(string input)
         {
-            // If an input is epmty return empty string
             if (string.IsNullOrEmpty(input))
                 return string.Empty;
 
-            var output = string.Empty; // expression
+            var output = new StringBuilder();//string.Empty; // expression
             var operStack = new Stack<char>(); // operators stack
 
             for (int i = 0; i < input.Length; i++) // process each symbol
@@ -66,13 +66,14 @@ namespace ReversePolishNotationCalcLibrary
                     // Reads to a delimeter or operator
                     while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
                     {
-                        output += input[i]; // add each digit of the number to output
+                        output.Append(input[i]); // add each digit of the number to output
                         i++; // goes to next symbol
 
-                        if (i == input.Length) break; // goes out if last symbol
+                        if (i == input.Length) // goes out if last symbol
+                            break; 
                     }
 
-                    output += " ";  
+                    output.Append(" ");  
                     i--; // Return to one symbol back before the delimeter
                 }
 
@@ -88,7 +89,7 @@ namespace ReversePolishNotationCalcLibrary
 
                         while (s != '(')
                         {
-                            output += s.ToString() + ' ';
+                            output.Append(s.ToString() + ' ');
                             s = operStack.Pop();
                         }
                     }
@@ -96,7 +97,7 @@ namespace ReversePolishNotationCalcLibrary
                     {
                         if (operStack.Count > 0) // If stack contains elements
                             if (GetPriority(input[i]) <= GetPriority(operStack.Peek())) // If operator priority is less or equals to operator at stack haed
-                                output += operStack.Pop().ToString() + " ";             // than add the last operator from stack to the output
+                                output.Append(operStack.Pop().ToString() + " ");             // than add the last operator from stack to the output
 
                         operStack.Push(char.Parse(input[i].ToString())); // If stack is empty or operator priority is greater than previous add operator to the head of the stack
 
@@ -106,14 +107,13 @@ namespace ReversePolishNotationCalcLibrary
 
             // After all symbols are passed get all elements from stack which left  
             while (operStack.Count > 0)
-                output += operStack.Pop() + " ";
+                output.Append(operStack.Pop() + " ");
 
-            return output;  
+            return output.ToString();  
         }
 
-        private static double Counting(string input)
+        public static double CalculateReversePolishNotation(string input)
         {
-            // If string is empty return 0
             if (string.IsNullOrWhiteSpace(input))
                 return 0;
 
@@ -131,7 +131,8 @@ namespace ReversePolishNotationCalcLibrary
                     {
                         a += input[i]; // Add
                         i++;
-                        if (i == input.Length) break;
+                        if (i == input.Length) 
+                            break;
                     }
                     temp.Push(double.Parse(a)); 
                     i--;
@@ -153,7 +154,7 @@ namespace ReversePolishNotationCalcLibrary
                     temp.Push(result);  
                 }
             }
-            return temp.Peek(); // Return results of all calculations
+            return temp.Pop(); // Return results of all calculations
         }
     }
 }

@@ -11,14 +11,16 @@ namespace RPNCalculatorApp
 
             while (true)  
             {
+                Console.WriteLine(RPN.CalculateReversePolishNotation("5 1 2 + 4 * + 3 -"));
                 Console.Write("Enter a standart expression: "); 
-                Console.WriteLine($"Result is {RPN.Calculate(Console.ReadLine())}");  
+                Console.WriteLine($"Result is {RPN.CalculateNormalExpresion(Console.ReadLine())}");                
 
                 Console.WriteLine("Press \"Y\" to continue or \"N\" to exit");
                 ConsoleKeyInfo key = Console.ReadKey();
                 if (key.Key == ConsoleKey.Y)
                     continue;
-                else if (key.Key == ConsoleKey.N)
+
+                if (key.Key == ConsoleKey.N)
                     break;
             }
 

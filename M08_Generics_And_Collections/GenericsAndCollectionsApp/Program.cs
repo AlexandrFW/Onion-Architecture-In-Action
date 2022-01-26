@@ -23,15 +23,14 @@ namespace GenericsAndCollectionsApp
 
             string needToBeFound = "asd3";
             Console.WriteLine($"We are looking for {needToBeFound}");
-            int result = GenericsExamples.BinarySearch(array, needToBeFound, new ComparatorString()); //for array of Int new ComparatorInt());
+            int result = GenericsExamples.BinarySearch(array, needToBeFound, new StringComparator()); //for array of Int new IntComparator());
             Console.WriteLine($"Result of binary search is: element position at index {result}");
 
             Console.WriteLine();
 
             Console.WriteLine("Create a generator that will generate 10 Fibonacci numbers");
-            var generator = new FibonacciSequinceYieldExamples(10);
 
-            foreach (var num in generator)
+            foreach (var num in FibonacciSequenceYieldExamples.GetEnumerator(10))
             {
                 Console.Write(num + ", ");
             }

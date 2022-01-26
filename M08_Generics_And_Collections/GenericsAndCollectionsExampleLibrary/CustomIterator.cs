@@ -28,13 +28,9 @@ namespace GenericsAndCollectionsExampleLibrary
             _currentIndex++;
 
             if (IsDone == false)
-            {
                 return _aggregate[_currentIndex];
-            }
-            else
-            {
-                return default;
-            }
+
+            return default;            
         }
 
         public T CurrentItem
@@ -53,6 +49,7 @@ namespace GenericsAndCollectionsExampleLibrary
                 {
                     return false;
                 }
+
                 return true;
             }
         }       
