@@ -6,7 +6,6 @@ namespace ReversePolishNotationCalcLibrary
 {
     public static class RPN
     {
-        // True if the given char is delimeter
         private static bool IsDelimeter(char c)
         {
             if ((" =".IndexOf(c) != -1))
@@ -15,7 +14,6 @@ namespace ReversePolishNotationCalcLibrary
             return false;
         }
 
-        // True if the given char is operator
         private static bool IsOperator(char с)
         {
             if (("+-/*^()".IndexOf(с) != -1))
@@ -24,7 +22,6 @@ namespace ReversePolishNotationCalcLibrary
             return false;
         }
 
-        // Return operator priority
         private static byte GetPriority(char s)
         {
             return s switch
@@ -51,25 +48,23 @@ namespace ReversePolishNotationCalcLibrary
             if (string.IsNullOrEmpty(input))
                 return string.Empty;
 
-            var output = new StringBuilder();//string.Empty; // expression
-            var operStack = new Stack<char>(); // operators stack
+            var output = new StringBuilder();  
+            var operatorsStack = new Stack<char>(); 
 
-            for (int i = 0; i < input.Length; i++) // process each symbol
+            for (int i = 0; i < input.Length; i++) 
             {
-                // If delimeter, continue
                 if (IsDelimeter(input[i]))
                     continue;  
 
-                // If digit read whole number
                 if (char.IsDigit(input[i]))  
                 {
-                    // Reads to a delimeter or operator
+                    // Reads whole number till a delimeter or operator
                     while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
                     {
                         output.Append(input[i]); // add each digit of the number to output
-                        i++; // goes to next symbol
+                        i++;
 
-                        if (i == input.Length) // goes out if last symbol
+                        if (i == input.Length) 
                             break; 
                     }
 
@@ -77,37 +72,35 @@ namespace ReversePolishNotationCalcLibrary
                     i--; // Return to one symbol back before the delimeter
                 }
 
-                // If operator
                 if (IsOperator(input[i]))  
                 {
-                    if (input[i] == '(') // If open bracket push to stack
-                        operStack.Push(input[i]);  
-                    else if (input[i] == ')') //If closing bracket push to stack
+                    if (input[i] == '(') 
+                        operatorsStack.Push(input[i]);  
+                    else if (input[i] == ')') 
                     {
-                        //Put all data prior to open bracket
-                        var s = operStack.Pop();
+                        var symbol = operatorsStack.Pop();
 
-                        while (s != '(')
+                        while (symbol != '(')
                         {
-                            output.Append(s.ToString() + ' ');
-                            s = operStack.Pop();
+                            output.Append(symbol.ToString() + ' ');
+                            symbol = operatorsStack.Pop();
                         }
                     }
                     else // If another operator
                     {
-                        if (operStack.Count > 0) // If stack contains elements
-                            if (GetPriority(input[i]) <= GetPriority(operStack.Peek())) // If operator priority is less or equals to operator at stack haed
-                                output.Append(operStack.Pop().ToString() + " ");             // than add the last operator from stack to the output
+                        if (operatorsStack.Count > 0) 
+                            if (GetPriority(input[i]) <= GetPriority(operatorsStack.Peek())) 
+                                output.Append(operatorsStack.Pop().ToString() + " ");
 
-                        operStack.Push(char.Parse(input[i].ToString())); // If stack is empty or operator priority is greater than previous add operator to the head of the stack
+                        operatorsStack.Push(char.Parse(input[i].ToString()));
 
                     }
                 }
             }
 
-            // After all symbols are passed get all elements from stack which left  
-            while (operStack.Count > 0)
-                output.Append(operStack.Pop() + " ");
+            // Generate output
+            while (operatorsStack.Count > 0)
+                output.Append(operatorsStack.Pop() + " ");
 
             return output.ToString();  
         }
@@ -118,18 +111,18 @@ namespace ReversePolishNotationCalcLibrary
                 return 0;
 
             double result = 0;  
-            var temp = new Stack<double>(); //Stack for solution
+            var temp = new Stack<double>(); 
 
-            for (int i = 0; i < input.Length; i++) // for each symbols
+            for (int i = 0; i < input.Length; i++) 
             {
-                // If a digit read whole number and push the head of the stack
                 if (char.IsDigit(input[i]))
                 {
                     var a = string.Empty;
 
+                    // Read whole number
                     while (!IsDelimeter(input[i]) && !IsOperator(input[i]))
                     {
-                        a += input[i]; // Add
+                        a += input[i];
                         i++;
                         if (i == input.Length)
                             break;
@@ -137,15 +130,14 @@ namespace ReversePolishNotationCalcLibrary
                     temp.Push(double.Parse(a));
                     i--;
                 }
-                else if (IsOperator(input[i])) // If operator
+                else if (IsOperator(input[i])) 
                 {
-                    // Get the two last values from stack
                     try
                     {
-                        var a = temp.Pop();// : throw new InvalidOperationException("Operands is over. Nothing to operate. Check if your expression is correct");
+                        var a = temp.Pop();
                         var b = temp.Pop();
 
-                        switch (input[i]) // process that values with accordance to an operator
+                        switch (input[i]) 
                         {
                             case '+': result = b + a; break;
                             case '-': result = b - a; break;
@@ -161,7 +153,7 @@ namespace ReversePolishNotationCalcLibrary
                     }
                 }
             }
-            return temp.Pop(); // Return results of all calculations
+            return temp.Pop(); 
         }
     }
 }
