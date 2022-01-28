@@ -36,6 +36,7 @@ namespace Language_Integrated_Query_App
                         if(input == "help")
                         {
                             PrintHelp();
+
                             continue;                              
                         }
 
@@ -43,7 +44,7 @@ namespace Language_Integrated_Query_App
                         PrintHowToCallHelp();                        
 
                         var filteredData = FilterData(_students, input);
-                        if (filteredData.Count <= 0)
+                        if (!filteredData.Any())
                         {
                             Console.WriteLine("Nothing to display with accordace entered criteria");
                             continue;
@@ -85,8 +86,7 @@ namespace Language_Integrated_Query_App
         private static void PrintHowToCallHelp()
         {
             Console.WriteLine("Enter \"help\" to show \"How to use\"");
-            Console.WriteLine();
-           
+            Console.WriteLine();           
         }
 
         private static void PrintWelcomeToInput()
@@ -102,27 +102,21 @@ namespace Language_Integrated_Query_App
             _students = JsonSerializer.Deserialize<List<Student>>(jsonStudents);
         }
 
-        private static void PrintData(List<Student> data)
+        private static void PrintData(IEnumerable<Student> data)
         {
             foreach (var student in data)
             {
-                Console.WriteLine($"Name: {student.First_Name} {student.Last_Name}, " + 
-                                  $"Date: {student.Date_Pass.ToShortDateString()}, " + 
-                                  $"Test: {student.Test_Name}, " +
-                                  $"Mark: {student.Mark}");
+                Console.WriteLine(student.ToString());
             }
         }
 
         // -name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021 -sort name asc     
-        public static List<Student> FilterData(List<Student> data, string input)
+        public static IEnumerable<Student> FilterData(IEnumerable<Student> data, string input)
         {
             ParseFilterParameters(input);
 
-            if (_filterDictionary is null)
-                throw new ArgumentNullException("Dictionary with filter parameters is null");
-
-            if (_filterDictionary.Count == 0)
-                return data;            
+            if (!_filterDictionary.Any())
+                throw new InvalidOperationException("Nothing to display with accordace entered criteria");      
 
             IEnumerable<Student> query = data;
 
@@ -181,14 +175,35 @@ namespace Language_Integrated_Query_App
                                     if (sort[1] == "asc")
                                         query = query.OrderBy(n => n.First_Name);
                                     else
-                                        query = query.OrderBy(n => n.First_Name).Reverse();
+                                        query = query.OrderByDescending(n => n.First_Name);
                                     break;
 
                                 case "lastname":
                                     if (sort[1] == "asc")
                                         query = query.OrderBy(n => n.Last_Name);
                                     else
-                                        query = query.OrderBy(n => n.Last_Name).Reverse();
+                                        query = query.OrderByDescending(n => n.Last_Name);
+                                    break;
+
+                                case "date":
+                                    if (sort[1] == "asc")
+                                        query = query.OrderBy(n => n.Date_Pass);
+                                    else
+                                        query = query.OrderByDescending(n => n.Date_Pass);
+                                    break;
+
+                                case "test":
+                                    if (sort[1] == "asc")
+                                        query = query.OrderBy(n => n.Test_Name);
+                                    else
+                                        query = query.OrderByDescending(n => n.Test_Name);
+                                    break;
+
+                                case "mark":
+                                    if (sort[1] == "asc")
+                                        query = query.OrderBy(n => n.Mark);
+                                    else
+                                        query = query.OrderByDescending(n => n.Mark);
                                     break;
                             }
                         }
@@ -199,7 +214,7 @@ namespace Language_Integrated_Query_App
             return query.ToList();
         }
 
-        public static List<Student> GetAllStudents()
+        public static IEnumerable<Student> GetAllStudents()
         {
             return _students;
         }

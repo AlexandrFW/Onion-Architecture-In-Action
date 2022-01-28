@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace Language_Integrated_Query_App.Test
 {
@@ -11,54 +12,62 @@ namespace Language_Integrated_Query_App.Test
         {
             // Act
             Program.Load();
-            var students = Program.GetAllStudents();
-            int count = students.Count;
+            var students = Program.GetAllStudents().OrderBy(s => s);
+            var filteredMock = mockStudents.OrderBy(s => s);
 
             // Assert
-            Assert.That(count, Is.EqualTo(mockStudents.Count));
+            Assert.That(students.SequenceEqual(filteredMock), Is.True);
         }
 
         [Test]
-        [TestCase("-mark 4", ExpectedResult = 4)]
-        [TestCase("-name Ivan", ExpectedResult = 1)]
-        [TestCase("-test Maths", ExpectedResult = 3)]
-        [TestCase("-name Andrey -test Maths", ExpectedResult = 1)]
-        [TestCase("-name Ivan-test Maths", ExpectedResult = 1)]
-        [TestCase("-datefrom 20/06/2021 -dateto 20/07/2021", ExpectedResult = 5)]
-        [TestCase("-datefrom 20.06.2021 -dateto 20.07.2021", ExpectedResult = 5)]
-        [TestCase("-datefrom 2006.2021 -dateto 20.07.2021", ExpectedResult = 7)]
-        [TestCase("-dateto 20/07/2021", ExpectedResult = 7)]
-        [TestCase("-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021", ExpectedResult = 1)]
-        [TestCase("-nameeeeee Artem", ExpectedResult = 7)]//-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021 -sort name asc
-        [TestCase("------test PE", ExpectedResult = 2)]
-        public int Filter_Students_With_Any_Parameters_Test(string input)
+        [TestCase("-mark 4")]
+        [TestCase("-name Ivan")]
+        [TestCase("-test Maths")]
+        [TestCase("-name Andrey -test Maths")]
+        [TestCase("-name Ivan-test Maths")]
+        [TestCase("-datefrom 20/06/2021 -dateto 20/07/2021")]
+        [TestCase("-datefrom 20.06.2021 -dateto 20.07.2021")]
+        [TestCase("-datefrom 2006.2021 -dateto 20.07.2021")]
+        [TestCase("-dateto 20/07/2021")]
+        [TestCase("-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021")]
+        [TestCase("-nameeeeee Artem")]//-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021 -sort name asc
+        [TestCase("------test PE")]
+        public void Filter_Students_With_Any_Parameters_Test(string input)
 {
             // Act
             Program.Load();
             var students = Program.GetAllStudents();
             var filteredList = Program.FilterData(students, input);
-            int count = filteredList.Count;
+            var filteredMock = Program.FilterData(mockStudents, input);
 
             // Assert
-            return count;
+            Assert.That(filteredList.SequenceEqual(filteredMock), Is.True);
         }
 
         [Test]
         [TestCase("-sort name asc")]
         [TestCase("-sort name desc")]
+        [TestCase("-sort lastname asc")]
+        [TestCase("-sort lastname desc")]
+        [TestCase("-sort test asc")]
+        [TestCase("-sort test desc")]
+        [TestCase("-sort mark asc")]
+        [TestCase("-sort mark desc")]
+        [TestCase("-sort date asc")]
+        [TestCase("-sort date desc")]
         public void Check_Sort_Function_Test(string input)
         {
             // Act
             Program.Load();
             var students = Program.GetAllStudents();
-            students.Sort(new StudentComparator());
-            mockStudents.Sort(new StudentComparator());
+            var filteredList = Program.FilterData(students, input);
+            var sortedMockStudents = Program.FilterData(mockStudents, input); 
 
             // Assert
-            Assert.That(students, Is.EqualTo(mockStudents));
+            Assert.That(filteredList.SequenceEqual(sortedMockStudents), Is.True);
         }
 
-        readonly List<Student> mockStudents = new List<Student>()
+        readonly IEnumerable<Student> mockStudents = new List<Student>()
         {
             new Student()
             {

@@ -20,6 +20,14 @@ namespace Language_Integrated_Query_App
         [JsonPropertyName("date_pass")]
         public DateTime Date_Pass { get; set; }
 
+        public override string ToString()
+        {
+            return $"Name: {First_Name} {Last_Name}, " +
+                   $"Date: {Date_Pass.ToShortDateString()}, " +
+                   $"Test: {Test_Name}, " +
+                   $"Mark: {Mark}";
+        }
+
         public int CompareTo(Student other)
         {
             if (First_Name == other.First_Name &&
