@@ -20,54 +20,33 @@ namespace Language_Integrated_Query_App.Test
         }
 
         [Test]
-        [TestCase("-mark 4")]
-        [TestCase("-name Ivan")]
-        [TestCase("-test Maths")]
-        [TestCase("-name Andrey -test Maths")]
-        [TestCase("-name Ivan-test Maths")]
-        [TestCase("-datefrom 20/06/2021 -dateto 20/07/2021")]
-        [TestCase("-datefrom 20.06.2021 -dateto 20.07.2021")]
-        [TestCase("-datefrom 2006.2021 -dateto 20.07.2021")]
-        [TestCase("-dateto 20/07/2021")]
-        [TestCase("-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021")]
-        [TestCase("-nameeeeee Artem")]//-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021 -sort name asc
-        [TestCase("------test PE")]
-        public void Filter_Students_With_Any_Parameters_Test(string input)
+        [TestCaseSource(nameof(source_for_test_filter_method))]
+        public void Filter_Students_With_Any_Parameters_Test(IEnumerable<Student> filteredStudentsLocal, string input)
 {
             // Act
             Program.Load();
             var students = Program.GetAllStudents();
             var filteredList = Program.FilterData(students, input);
-            var filteredMock = Program.FilterData(mockStudents, input);
 
             // Assert
-            Assert.That(filteredList.SequenceEqual(filteredMock), Is.True);
+            Assert.That(filteredList.SequenceEqual(filteredStudentsLocal), Is.True);
         }
 
         [Test]
-        [TestCase("-sort name asc")]
-        [TestCase("-sort name desc")]
-        [TestCase("-sort lastname asc")]
-        [TestCase("-sort lastname desc")]
-        [TestCase("-sort test asc")]
-        [TestCase("-sort test desc")]
-        [TestCase("-sort mark asc")]
-        [TestCase("-sort mark desc")]
-        [TestCase("-sort date asc")]
-        [TestCase("-sort date desc")]
-        public void Check_Sort_Function_Test(string input)
+        [TestCaseSource(nameof(source_for_test_sort))]
+        public void Check_Sort_Function_Test(IEnumerable<Student> studentsLocal, string input)
         {
             // Act
             Program.Load();
             var students = Program.GetAllStudents();
             var filteredList = Program.FilterData(students, input);
-            var sortedMockStudents = Program.FilterData(mockStudents, input); 
 
             // Assert
-            Assert.That(filteredList.SequenceEqual(sortedMockStudents), Is.True);
+            Assert.That(filteredList.SequenceEqual(studentsLocal), Is.True);
         }
+        
 
-        readonly IEnumerable<Student> mockStudents = new List<Student>()
+        static readonly IEnumerable<Student> mockStudents = new List<Student>()
         {
             new Student()
             {
@@ -125,6 +104,51 @@ namespace Language_Integrated_Query_App.Test
                 Mark = 4,
                 Date_Pass = new DateTime(2021, 06, 22, 16, 30, 0) 
             }
+        };
+
+        static readonly object[] source_for_test_filter_method = new object[]
+         { 
+             new object[] { mockStudents.Where(m => m.Mark == 4), "-mark 4" },
+             new object[] { mockStudents.Where(m => m.First_Name == "Ivan"), "-name Ivan" },
+             new object[] { mockStudents.Where(m => m.Test_Name == "Maths"), "-test Maths" },
+             new object[] { mockStudents.Where(n => n.First_Name == "Andrey").Where(m => m.Test_Name == "Maths"), "-name Andrey -test Maths" },
+             new object[] { mockStudents.Where(n => n.First_Name == "Ivan").Where(m => m.Test_Name == "Maths"), "-name Ivan-test Maths" },
+             new object[] { mockStudents.Where(n => n.First_Name == "Ivan").Where(m => m.Test_Name == "Maths"), "-name Ivan-test Maths" },
+
+             new object[] { mockStudents.Where(n => n.Date_Pass >= Convert.ToDateTime("20/06/2021"))
+                                        .Where(m => m.Date_Pass <= Convert.ToDateTime("20/07/2021")), "-datefrom 20/06/2021 -dateto 20/07/2021" },
+
+             new object[] { mockStudents.Where(n => n.Date_Pass >= Convert.ToDateTime("20.06.2021"))
+                                        .Where(m => m.Date_Pass <= Convert.ToDateTime("20.07.2021")), "-datefrom 20.06.2021 -dateto 20.07.2021" },
+
+             new object[] { mockStudents.Where(n => n.Date_Pass >= (DateTime.TryParse("2006.2021", out DateTime date) ? date : Convert.ToDateTime("20.07.2021").AddDays(-60)))
+                                        .Where(m => m.Date_Pass <= Convert.ToDateTime("20.07.2021")), "-datefrom 2006.2021 -dateto 20.07.2021" },
+
+             new object[] { mockStudents.Where(m => m.Date_Pass <= Convert.ToDateTime("20/07/2021")), "-dateto 20/07/2021" },
+
+             new object[] { mockStudents.Where(n => n.First_Name == "Ivan")
+                                        .Where(n => n.Test_Name == "Maths")
+                                        .Where(n => n.Mark >= 3)
+                                        .Where(n => n.Mark <= 5)
+                                        .Where(m => m.Date_Pass >= Convert.ToDateTime("20/05/2021"))
+                                        .Where(n => n.Date_Pass <= Convert.ToDateTime("22/07/2021")), "-name Ivan -test Maths -minmark 3 -maxmark 5 -datefrom 20/05/2021 -dateto 22/07/2021" },
+
+             new object[] { mockStudents.Where(m => m.Test_Name == "PE"), "------test PE" },
+             new object[] { new List<Student>(), "-nameeeeee Artem" }
+         };
+
+        static readonly object[] source_for_test_sort = new object[] 
+        {
+            new object[] { mockStudents.OrderBy(m => m.First_Name), "-sort name asc" },
+            new object[] { mockStudents.OrderByDescending(m => m.First_Name), "-sort name desc" },
+            new object[] { mockStudents.OrderBy(m => m.Last_Name), "-sort lastname asc" },
+            new object[] { mockStudents.OrderByDescending(m => m.Last_Name), "-sort lastname desc" },
+            new object[] { mockStudents.OrderBy(m => m.Test_Name), "-sort test asc" },
+            new object[] { mockStudents.OrderByDescending(m => m.Test_Name), "-sort test desc" },
+            new object[] { mockStudents.OrderBy(m => m.Mark), "-sort mark asc" },
+            new object[] { mockStudents.OrderByDescending(m => m.Mark), "-sort mark desc" },
+            new object[] { mockStudents.OrderBy(m => m.Date_Pass), "-sort date asc" },
+            new object[] { mockStudents.OrderByDescending(m => m.Date_Pass), "-sort date desc" }
         };
 
         private class StudentComparator : IComparer<Student>

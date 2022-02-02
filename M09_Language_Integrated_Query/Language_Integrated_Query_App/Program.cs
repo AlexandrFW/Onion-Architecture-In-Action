@@ -204,10 +204,13 @@ namespace Language_Integrated_Query_App
                                         query = query.OrderBy(n => n.Mark);
                                     else
                                         query = query.OrderByDescending(n => n.Mark);
-                                    break;
+                                    break;                               
                             }
                         }
                         break;
+
+                    default:
+                        return new List<Student>();
                 }
             }
 
