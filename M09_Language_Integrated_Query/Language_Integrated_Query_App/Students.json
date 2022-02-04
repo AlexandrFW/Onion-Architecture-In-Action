@@ -1,0 +1,51 @@
+[
+  {
+    "first_name": "Ivan",
+    "last_name": "Petrov",
+    "test_name": "Maths",
+    "mark": 5,
+    "date_pass": "2021-06-21T15:00:00"
+  },
+  {
+    "first_name": "Peotor",
+    "last_name": "Sidorov",
+    "test_name": "PE",
+    "mark": 4,
+    "date_pass": "2021-06-21T15:30:00"
+  },
+  {
+    "first_name": "Andrey",
+    "last_name": "Vasilev",
+    "test_name": "Maths",
+    "mark": 4,
+    "date_pass": "2021-06-21T12:20:00"
+  },
+  {
+    "first_name": "Svetlana",
+    "last_name": "Petrova",
+    "test_name": "Maths",
+    "mark": 5,
+    "date_pass": "2021-06-20T14:20:00"
+  },
+  {
+    "first_name": "Danil",
+    "last_name": "Kostrov",
+    "test_name": "Geography",
+    "mark": 4,
+    "date_pass": "2021-06-19T15:30:00"
+  },
+  {
+    "first_name": "Artem",
+    "last_name": "Nosov",
+    "test_name": "Biology",
+    "mark": 3,
+    "date_pass": "2021-06-19T15:10:00"
+  },
+  {
+    "first_name": "Dmitry",
+    "last_name": "Vetrov",
+    "test_name": "PE",
+    "mark": 4,
+    "date_pass": "2021-06-22T16:30:00"
+  }
+]
