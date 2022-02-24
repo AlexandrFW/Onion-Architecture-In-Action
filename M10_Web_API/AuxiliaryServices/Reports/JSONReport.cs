@@ -3,7 +3,7 @@ using AuxiliaryServices.Tools;
 
 namespace AuxiliaryServices.Reports
 {
-    public class JSONReport : IReportService
+    internal class JSONReport : IReportService
     {
         public string GetReport<T>(IEnumerable<T> serializedCollection)
         {

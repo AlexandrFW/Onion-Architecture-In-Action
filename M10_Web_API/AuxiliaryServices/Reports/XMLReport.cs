@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace AuxiliaryServices.Reports
 {
-    public class XMLReport : IReportService
+    internal class XMLReport : IReportService
     {
         public string GetReport<T>(IEnumerable<T> serializedCollection)
         {
