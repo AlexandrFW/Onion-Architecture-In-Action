@@ -3,6 +3,7 @@ using DataAccess.ModelsDb;
 using Domain.Interfaces.Repositories;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace DataAccess.Repositories
 {
@@ -50,8 +51,13 @@ namespace DataAccess.Repositories
             if (!string.IsNullOrEmpty(id))
             {
                 string[] arrKeys = id.Split('_');
-                var lectureStudentsDb = _context.LecturesStudents.Where(x => x.LectureId == int.Parse(arrKeys[0]))
-                                                                 .FirstOrDefault(y => y.StudentId == int.Parse(arrKeys[1]));
+                var lectureStudentsDb = _context.LecturesStudents
+                                                        .Include(s => s.Student)
+                                                        .Include(l => l.Lecture)
+                                                        .ThenInclude(lr => lr.Lector)
+                                                        .Where(x => x.LectureId == int.Parse(arrKeys[0]))
+                                                        .FirstOrDefault(y => y.StudentId == int.Parse(arrKeys[1]));
+
                 return _mapper.Map<LecturesStudents?>(lectureStudentsDb);
             }
 
@@ -60,7 +66,12 @@ namespace DataAccess.Repositories
 
         public IEnumerable<LecturesStudents> GetAll()
         {
-            var lectureStudentsDb = _context.LecturesStudents.ToList();
+            var lectureStudentsDb = _context.LecturesStudents
+                                            .Include(s => s.Student)
+                                            .Include(l => l.Lecture)
+                                            .ThenInclude(lr => lr.Lector)
+                                            .ToList();
+
             return _mapper.Map<IReadOnlyCollection<LecturesStudents>>(lectureStudentsDb);
         }
 

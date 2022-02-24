@@ -2,6 +2,6 @@
 {
     public interface IReportService
     {
-        public string GetReport(string reportFormat);
+        public string GetReport<T>(IEnumerable<T> serializedCollection);
     }
 }

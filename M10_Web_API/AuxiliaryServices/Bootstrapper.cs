@@ -2,7 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Services.Notification;
+using AuxiliaryServices.Notification;
+using AuxiliaryServices.Reports;
 
 namespace AuxiliaryServices
 {
@@ -18,6 +19,13 @@ namespace AuxiliaryServices
         {
             return services
                 .AddScoped<ISMSService>(email => new SMSService(confSection, logger));
+        }
+
+        public static IServiceCollection AddReportService(this IServiceCollection services)
+        {
+            return services
+                .AddScoped<IReportService, JSONReport>()
+                .AddScoped<IReportStrategyFactory, ReportStrategyFactory>();
         }
     }
 }

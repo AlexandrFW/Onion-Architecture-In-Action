@@ -2,11 +2,11 @@
 using Domain.ServiceTools;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Services.Tools;
+using AuxiliaryServices.Tools;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 
-namespace Services.Notification
+namespace AuxiliaryServices.Notification
 {
     public class SMSService : ISMSService
     {

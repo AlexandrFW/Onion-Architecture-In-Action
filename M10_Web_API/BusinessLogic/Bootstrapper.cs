@@ -1,5 +1,7 @@
 ﻿using BusinessLogic.BusinessServices;
+using BusinessLogic.BusinessServicesTools;
 using Domain.Interfaces.BusinessLogicServices;
+using Domain.Interfaces.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BusinessLogic
@@ -14,7 +16,8 @@ namespace BusinessLogic
                 .AddScoped<IHomeworksService, HomeworksService>()
                 .AddScoped<ILecturesService, LectureService>()
                 .AddScoped<ILecturesStudentsService, LecturesStudentsService>()
-                .AddScoped<IHomeworksStudentsService, HomeworksStudentsService>();
+                .AddScoped<IHomeworksStudentsService, HomeworksStudentsService>()
+                .AddScoped<IReportApiService, ReportService>();
         }
     }
 }

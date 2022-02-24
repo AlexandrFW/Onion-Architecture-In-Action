@@ -1,12 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Interfaces.Services;
+using System.Xml;
+using System.Xml.Serialization;
 
-namespace Services.Reports
+namespace AuxiliaryServices.Reports
 {
-    public class XMLReport
+    public class XMLReport : IReportService
     {
+        public string GetReport<T>(IEnumerable<T> serializedCollection)
+        {
+            var xml = string.Empty;
+
+            if (serializedCollection is not null)
+            {
+                serializedCollection = serializedCollection.ToList();
+
+                using (var stringWriter = new StringWriter())
+                {
+                    var serializerXML = new XmlSerializer(serializedCollection.GetType());
+                    using (var writer = XmlWriter.Create(stringWriter))
+                    {
+                        serializerXML.Serialize(writer, serializedCollection);
+                        xml = stringWriter.ToString();
+                    }
+                }
+            }
+
+            return xml;
+        }
     }
 }

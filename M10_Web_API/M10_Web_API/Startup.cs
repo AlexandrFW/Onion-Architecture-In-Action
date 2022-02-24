@@ -8,7 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Services.Notification;
+using AuxiliaryServices.Notification;
 
 namespace M10_Web_API
 {
@@ -41,6 +41,7 @@ namespace M10_Web_API
                  .AddEmailService(loggerEmailService, Configuration.GetSection("EmailCreadentials"))
                  .AddSMSService(loggerSMSService, Configuration.GetSection("SMSCong"))
                  .AddDataAccess(Configuration.GetConnectionString("UniversitatDb"))
+                 .AddReportService()
                  .AddBusinessLogic();
                  
                  

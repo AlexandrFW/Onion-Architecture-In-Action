@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Text.Json;
 
-namespace Services.Tools
+namespace AuxiliaryServices.Tools
 {
     internal static class JSONSerializer
     {
@@ -10,6 +10,13 @@ namespace Services.Tools
             T? deserializedObject = JsonSerializer.Deserialize<T>(json_string);
 
             return deserializedObject;
+        }
+
+        public static string JSONSerialize<T>(IEnumerable<T> serializedCollection)
+        {
+            var serializedObject = JsonSerializer.Serialize(serializedCollection);
+
+            return serializedObject;
         }
 
         public static T JSONGetSection<T>(IConfigurationSection confSection)

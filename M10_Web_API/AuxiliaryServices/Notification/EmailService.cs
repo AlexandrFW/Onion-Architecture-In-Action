@@ -4,9 +4,9 @@ using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using MimeKit;
-using Services.Tools;
+using AuxiliaryServices.Tools;
 
-namespace Services.Notification
+namespace AuxiliaryServices.Notification
 {
     public class EmailService : IEmailService
     {
