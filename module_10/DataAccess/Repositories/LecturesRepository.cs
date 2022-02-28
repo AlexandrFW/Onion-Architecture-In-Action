@@ -39,11 +39,13 @@ namespace DataAccess.Repositories
             return result.Entity.Id;
 }
 
-        public void Edit(Lecture lecture)
+        public void Edit(int id, Lecture lecture)
         {
-            if (_context.Lectures.Find(lecture.Id) is LectureDb lectureInDb)
+            if (_context.Lectures.Find(id) is LectureDb lectureInDb)
             {
                 lectureInDb.LectureName = lecture.LectureName;
+                lectureInDb.LectorId = lecture.LectorId;
+
                 _context.Entry(lectureInDb).State = EntityState.Modified;
                 _context.SaveChanges();
             }

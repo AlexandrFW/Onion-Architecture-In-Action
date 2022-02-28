@@ -42,12 +42,12 @@ namespace DataAccess.Repositories
             return result.Entity.Id;
         }
 
-        public void Edit(Homework homework)
+        public void Edit(int id, Homework homework)
         {
-            if (_context.Homeworks.Find(homework.Id) is HomeworkDb homeworkInDb)
+            if (_context.Homeworks.Find(id) is HomeworkDb homeworkInDb)
             {
                 homeworkInDb.Subject = homework.Subject;
-                homeworkInDb.Lecture.Id = homework.LectureId;
+                homeworkInDb.LectureId = homework.LectureId;
 
                 _context.Entry(homeworkInDb).State = EntityState.Modified;
                 _context.SaveChanges();

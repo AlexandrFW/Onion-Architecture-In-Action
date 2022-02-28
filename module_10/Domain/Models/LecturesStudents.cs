@@ -17,7 +17,7 @@ namespace Domain.Models
 
         public int Grade { get; set; }
 
-        public bool IsStudentWasAttended { get; set; }
+        public bool IsStudentAttended { get; set; }
 
         public string LectorName { get; set; }
     }

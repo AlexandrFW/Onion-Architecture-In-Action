@@ -158,8 +158,8 @@ namespace DataAccess
                     Grade = 0,
                     IsStudentAttended = false,
                     LectureDate = DateTime.Now
-}
-};
+                }
+            };
 
             modelBuilder.ApplyConfiguration(new LectureDbStudentDbConfiguration());
             modelBuilder.ApplyConfiguration(new HomeworkDbStudentDbConfiguration());

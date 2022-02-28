@@ -40,7 +40,7 @@ namespace DataAccess.Repositories
 
             if (lecturesStudentsInDb is not null)
             {
-                lecturesStudentsInDb.IsStudentAttended = lecturesStudents.IsStudentWasAttended;
+                lecturesStudentsInDb.IsStudentAttended = lecturesStudents.IsStudentAttended;
                 lecturesStudentsInDb.Grade = lecturesStudents.Grade;
                 lecturesStudentsInDb.LectureDate = DateTime.Now;
 

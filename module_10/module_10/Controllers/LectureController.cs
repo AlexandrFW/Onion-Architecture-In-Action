@@ -43,7 +43,7 @@ namespace RestApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<string> UpdateLecture(int id, Lecture lecture)
         {
-            var lectureId = _lecturesService.Edit(lecture with { Id = id });
+            var lectureId = _lecturesService.Edit(id, lecture);
             return Ok($"api/lector/{lectureId}");
         }
 

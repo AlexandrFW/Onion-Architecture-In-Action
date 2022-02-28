@@ -41,13 +41,15 @@ namespace DataAccess.Repositories
             return result.Entity.Id;
         }
 
-        public void Edit(Student student)
+        public void Edit(int id, Student student)
         {
-            if (_context.Students.Find(student.Id) is StudentDb studentInDb)
+            if (_context.Students.Find(id) is StudentDb studentInDb)
             {
                 studentInDb.Name = student.Name;
                 studentInDb.Email = student.Email;
                 studentInDb.Age = student.Age;
+                studentInDb.Phone = student.Phone;
+
                 _context.Entry(studentInDb).State = EntityState.Modified;
                 _context.SaveChanges();
             }

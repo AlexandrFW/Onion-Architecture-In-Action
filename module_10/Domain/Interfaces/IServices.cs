@@ -10,7 +10,7 @@ namespace Domain.Interfaces
 
         int New(T person);
 
-        int Edit(T person);
+        int Edit(int id, T person);
 
         void Delete(int id);
     }

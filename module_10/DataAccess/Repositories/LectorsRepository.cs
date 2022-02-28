@@ -41,13 +41,15 @@ namespace DataAccess.Repositories
             return result.Entity.Id;
         }
 
-        public void Edit(Lector lector)
+        public void Edit(int id, Lector lector)
         {
-            if (_context.Lectors.Find(lector.Id) is LectorDb lectorInDb)
+            if (_context.Lectors.Find(id) is LectorDb lectorInDb)
             {
                 lectorInDb.Name = lector.Name;
                 lectorInDb.Email = lector.Email;
                 lectorInDb.Age = lector.Age;
+                lectorInDb.Phone = lector.Phone;
+
                 _context.Entry(lectorInDb).State = EntityState.Modified;
                 _context.SaveChanges();
             }

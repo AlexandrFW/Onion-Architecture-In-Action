@@ -75,7 +75,7 @@ namespace BusinessLogic.BusinessServices
 
             // Check if student is attendend and send email if not
             var missedLecturesCount = _lectureStudentsRepository.GetAll()
-                                                                .Where(x => x.IsStudentWasAttended == false)
+                                                                .Where(x => x.IsStudentAttended == false)
                                                                 .Where(y => y.StudentId == lecturseStudents.StudentId)
                                                                 .Where(z => z.LectureId == lecturseStudents.LectureId)
                                                                 .Count();

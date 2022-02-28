@@ -6,7 +6,7 @@ namespace Domain.Interfaces
     {
         void Delete(int id);
 
-        void Edit(T person);
+        void Edit(int id, T person);
 
         T? Get(int id);
 

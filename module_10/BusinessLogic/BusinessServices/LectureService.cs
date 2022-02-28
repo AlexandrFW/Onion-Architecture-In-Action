@@ -20,9 +20,9 @@ namespace BusinessLogic.BusinessServices
             _lecturesRepository.Delete(id);
         }
 
-        public int Edit(Lecture lecture)
+        public int Edit(int id, Lecture lecture)
         {
-            _lecturesRepository.Edit(lecture);
+            _lecturesRepository.Edit(id, lecture);
             return lecture.Id;
         }
 

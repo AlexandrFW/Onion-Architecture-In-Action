@@ -23,9 +23,9 @@ namespace BusinessLogic.BusinessServices
             _homeworksRepository.Delete(id);
         }
 
-        public int Edit(Homework homework)
+        public int Edit(int id, Homework homework)
         {
-            _homeworksRepository.Edit(homework);
+            _homeworksRepository.Edit(id, homework);
             return homework.Id;
         }
 

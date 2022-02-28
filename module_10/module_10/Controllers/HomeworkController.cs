@@ -48,7 +48,7 @@ namespace RestApi.Controllers
         [HttpPut("{id}")]
         public ActionResult<string> UpdateStudent(int id, Homework student)
         {
-            var studentId = _homeworksService.Edit(student with { Id = id });
+            var studentId = _homeworksService.Edit(id, student);
             return Ok($"api/student/{studentId}");
         }
 
