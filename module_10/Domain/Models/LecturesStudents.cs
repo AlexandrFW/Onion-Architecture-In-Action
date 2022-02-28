@@ -3,7 +3,7 @@
 namespace Domain.Models
 {
     [Serializable]
-    public class LecturesStudents
+    public class LecturesStudents : IComparable<LecturesStudents>
     {
         public int LectureId { get; set; }
 
@@ -20,5 +20,25 @@ namespace Domain.Models
         public bool IsStudentAttended { get; set; }
 
         public string LectorName { get; set; }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is LecturesStudents lecturesStudents)
+            {
+                return (LectureId == lecturesStudents.LectureId && StudentId == lecturesStudents.StudentId);
+            }
+
+            return false;
+        }
+
+        public int CompareTo(LecturesStudents? otherLectureStudent)
+        {
+            if (otherLectureStudent is LecturesStudents)
+            {
+                return otherLectureStudent.LectureId.CompareTo(LectureId);
+            }
+
+            return -1;
+        }
     }
 }

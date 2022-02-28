@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "subject": "Philosophy of ancient Rome",
+    "lectureId": 1
+  },
+  {
+    "id": 2,
+    "subject": "Theory of Algorithms",
+    "lectureId": 2
+  },
+  {
+    "id": 3,
+    "subject": "Passive voice",
+    "lectureId": 5
+  },
+  {
+    "id": 4,
+    "subject": "Transistors in modern electronics",
+    "lectureId": 7
+  },
+  {
+    "id": 5,
+    "subject": "Mathematical modeling",
+    "lectureId": 6
+  },
+  {
+    "id": 6,
+    "subject": "What a philosophy is: subject, object and subject of science, methods",
+    "lectureId": 1
+  },
+  {
+    "id": 7,
+    "subject": "Mathematical modeling. Part 2",
+    "lectureId": 6
+  }
+]
