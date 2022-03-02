@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using DataAccess.ModelsDb;
-using Domain.Interfaces.Extentions;
 using Domain.Interfaces.Repositories;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;

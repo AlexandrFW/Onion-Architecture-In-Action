@@ -1,5 +1,4 @@
-﻿using Domain.Interfaces.Extentions;
-using Domain.Models;
+﻿using Domain.Models;
 
 namespace Domain.Interfaces.Repositories
 {
