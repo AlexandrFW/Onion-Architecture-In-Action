@@ -42,14 +42,14 @@ namespace M10_Web_API.Controllers
             _logger.LogInformation("Define homework to the student");
 
             var newStudentId = _homeworksStudentsService.New(homeworksStudent);
-            return Ok($"api/student/{newStudentId}");
+            return Ok($"api/homework-define/{newStudentId}");
         }
 
         [HttpPut("{id}")]
         public ActionResult<string> UpdateStudent(string id, HomeworksStudents homewoksStudents)
         {
             var studentId = _homeworksStudentsService.Edit(id, homewoksStudents);
-            return Ok($"api/student/{studentId}");
+            return Ok($"api/homework-define/{studentId}");
         }
 
         [HttpDelete("{id}")]

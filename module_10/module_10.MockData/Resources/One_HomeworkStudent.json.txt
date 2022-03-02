@@ -1,0 +1,4 @@
+{
+    "studentId": 2,
+    "homeworkId": 1
+}

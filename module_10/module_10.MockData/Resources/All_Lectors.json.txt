@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Vitaly Genadievich Gromov",
+    "email": "vitaly.gromov@universitat.ru",
+    "phone": "+79010078912",
+    "age": 45
+  },
+  {
+    "id": 2,
+    "name": "Anatoly Vladimirovich Smolny",
+    "email": "anatoly.smolny@universitat.ru",
+    "phone": "+79011010015",
+    "age": 52
+  },
+  {
+    "id": 3,
+    "name": "Galina Petrovna Antonuk",
+    "email": "galina.antonuk@universitat.ru",
+    "phone": "+79019661234",
+    "age": 43
+  },
+  {
+    "id": 4,
+    "name": "Daria Grigorievna Anopko",
+    "email": "daria.anopko@universitat.ru",
+    "phone": "+79019051256",
+    "age": 48
+  },
+  {
+    "id": 5,
+    "name": "Dmitry Alexandrovich Zavyalov",
+    "email": "dmitry.zavyalov@universitat.ru",
+    "phone": "+79010987645",
+    "age": 39
+  }
+]

@@ -72,7 +72,7 @@ namespace DataAccess.Repositories
             var result = _context.HomeworksStudents.Add(homeworkStudentsDb);
             _context.SaveChanges();
 
-            return $"{result.Entity.HomeworkId}_{result.Entity.StudentId}";
+            return $"{result.Entity.StudentId}_{result.Entity.HomeworkId}";
         }
 
         private HomeworksStudentsDb? GetHomeworksStudents(string id)

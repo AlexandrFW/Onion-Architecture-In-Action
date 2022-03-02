@@ -1,8 +1,9 @@
-﻿using Domain.Models;
+﻿using Domain.Interfaces.Extentions;
+using Domain.Models;
 
 namespace Domain.Interfaces.Repositories
 {
-    public interface ILecturesStudentsRepository : ILectureStudentsHomeworksRepository<LecturesStudents>
+    public interface ILecturesStudentsRepository : ILectureStudentsHomeworksRepository<LecturesStudents> 
     {
     }
 }

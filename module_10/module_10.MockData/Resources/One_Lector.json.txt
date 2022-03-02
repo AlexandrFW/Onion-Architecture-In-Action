@@ -1,0 +1,7 @@
+{
+    "id": 3,
+    "name": "Galina Petrovna Antonuk",
+    "email": "galina.antonuk@universitat.ru",
+    "phone": "+79019661234",
+    "age": 43
+  }

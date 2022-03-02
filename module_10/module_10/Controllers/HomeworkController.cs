@@ -21,35 +21,42 @@ namespace RestApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Homework> GetStudent(int id)
+        public ActionResult<Homework> GetHomework(int id)
         {
             return _homeworksService.Get(id) switch
             {
                 null => NotFound(),
-                var student => student  
+                var homework => homework  
             };
         }
 
         [HttpGet]
-        public ActionResult<IReadOnlyCollection<Homework>> GetStudents()
+        public ActionResult<IReadOnlyCollection<Homework>> GetHomeworks()
         {
-            return _homeworksService.GetAll().ToArray();
+            var homeworks = _homeworksService.GetAll().ToArray();
+
+            if (!homeworks.Any())
+            {
+                return NotFound();
+            }
+
+            return Ok(homeworks);
         }
 
         [HttpPost]
-        public IActionResult AddStudent(Homework student)
+        public IActionResult AddHomework(Homework homework)
         {
             _logger.LogInformation("Adding new homework");
 
-            var newStudentId = _homeworksService.New(student);
-            return Ok($"api/student/{newStudentId}");
+            var newHomeworkId = _homeworksService.New(homework);
+            return Ok($"api/homework/{newHomeworkId}");
         }
 
         [HttpPut("{id}")]
-        public ActionResult<string> UpdateStudent(int id, Homework student)
+        public ActionResult<string> UpdateHomework(int id, Homework student)
         {
-            var studentId = _homeworksService.Edit(id, student);
-            return Ok($"api/student/{studentId}");
+            var homeworkId = _homeworksService.Edit(id, student);
+            return Ok($"api/homework/{homeworkId}");
         }
 
         [HttpDelete("{id}")]

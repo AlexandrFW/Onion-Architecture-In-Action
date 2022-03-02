@@ -115,10 +115,10 @@ namespace module_10.Tests
             // Arrange
             var lectureStudentChanged = new LecturesStudents
 {
-                LectureId = int.Parse(arrKeys[0]),
-                LectureName = "English",
-                StudentId = int.Parse(arrKeys[1]),
-                StudentName = "Dmitry Nevedof",
+                LectureId = 0,
+                LectureName = "",
+                StudentId = 0,
+                StudentName = "",
                 Grade = grade,
                 IsStudentAttended = isStudentAttended,
                 LectureDate = DateTime.Now,

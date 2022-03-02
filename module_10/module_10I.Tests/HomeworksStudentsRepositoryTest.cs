@@ -81,7 +81,7 @@ namespace module_10.Tests
         }
 
         [Test]
-        [TestCase(6, 5, ExpectedResult = "6_5")]
+        [TestCase(6, 5, ExpectedResult = "5_6")]
         public string Check_If_New_Entity_Added_Test(int homeworkId, int studentId)
         {
             // Arrange

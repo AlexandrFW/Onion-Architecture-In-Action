@@ -42,11 +42,13 @@ namespace BusinessLogic.BusinessServices
 
         public string Edit(string id, LecturesStudents lecturseStudents)
         {
+            lecturseStudents = CheckIfStudentNotAttended(lecturseStudents);
+
             _lectureStudentsRepository.Edit(id, lecturseStudents);
 
             CheckIfSendNotificationsNeeded(lecturseStudents);
 
-            return $"{lecturseStudents.LectureId}_{lecturseStudents.StudentId}";
+            return id;
         }
 
         public LecturesStudents? Get(string id)
@@ -61,11 +63,21 @@ namespace BusinessLogic.BusinessServices
 
         public string New(LecturesStudents lecturseStudents)
         {
+            lecturseStudents = CheckIfStudentNotAttended(lecturseStudents);
+
             string newId = _lectureStudentsRepository.New(lecturseStudents);
 
             CheckIfSendNotificationsNeeded(lecturseStudents);
 
             return newId;
+        }
+
+        private LecturesStudents CheckIfStudentNotAttended(LecturesStudents lecturseStudents)
+        {
+            if (!lecturseStudents.IsStudentAttended)
+                lecturseStudents.Grade = 0;
+
+            return lecturseStudents;
         }
 
         private void CheckIfSendNotificationsNeeded(LecturesStudents lecturseStudents)
@@ -97,11 +109,7 @@ namespace BusinessLogic.BusinessServices
                     _emailService.SendEmailAsync(student.Email,
                                                  sSubjectNotification,
                                                  $"You missed more than 3 { lectureName } lecture");
-                }
-
-                // Sending notification email to student 
-                if (lecture is not null)
-                {
+               
                     lector = _lectorRepository.Get(lecture.LectorId);
                     if (lector is not null)
                     {
@@ -112,26 +120,31 @@ namespace BusinessLogic.BusinessServices
                                                      sSubjectNotification,
                                                      $"The student { (student is not null ? student.Name : "") } missed more than 3 { lecture.LectureName } lecture");
                     }
-
                 }
             }
 
-            // Send the SMS to the student
-            var averageGradeOfLecturesLessThan_4 = _lectureStudentsRepository.GetAll()
+            var checkIfDataForAverageCalcExists = _lectureStudentsRepository.GetAll()
                                                                     .Where(y => y.StudentId == lecturseStudents.StudentId)
                                                                     .Where(z => z.LectureId == lecturseStudents.LectureId)
-                                                                    .Average(x => x.Grade);
-            if (averageGradeOfLecturesLessThan_4 < 4)
-            {
-                if (student is not null && lecture is not null)
-                {
-                    _logger.LogInformation($"Try to send SMS for student {student.Id}");
-                    _smsService.SendSMS($"Your average grade of lecture {lecture.LectureName} less then 4", student.Phone);
-                }
-                else
-                    _logger.LogWarning($"Student of Lecture not found");
-            }
+                                                                    .Count();
 
+            if (checkIfDataForAverageCalcExists > 0)
+            {
+                var averageGradeOfLecturesLessThan_4 = _lectureStudentsRepository.GetAll()
+                                                                        .Where(y => y.StudentId == lecturseStudents.StudentId)
+                                                                        .Where(z => z.LectureId == lecturseStudents.LectureId)
+                                                                        .Average(x => x.Grade);
+                if (averageGradeOfLecturesLessThan_4 < 4)
+                {
+                    if (student is not null && lecture is not null)
+                    {
+                        _logger.LogInformation($"Try to send SMS for student {student.Id}");
+                        _smsService.SendSMS($"Your average grade of lecture {lecture.LectureName} less then 4", student.Phone);
+                    }
+                    else
+                        _logger.LogWarning($"Student of Lecture not found");
+                }
+            }
         }
     }
 }

@@ -42,14 +42,14 @@ namespace M10_Web_API.Controllers
             _logger.LogInformation("Adding new leture log");
 
             var newStudentId = _lecturesStudentsService.New(lecturesStudent);
-            return Ok($"api/student/{newStudentId}");
+            return Ok($"api/lecture-log/{newStudentId}");
         }
 
         [HttpPut("{id}")]
         public ActionResult<string> UpdateStudent(string id, LecturesStudents lectureStudents)
         {
             var studentId = _lecturesStudentsService.Edit(id, lectureStudents);
-            return Ok($"api/student/{studentId}");
+            return Ok($"api/lecture-log/{studentId}");
         }
 
         [HttpDelete("{id}")]

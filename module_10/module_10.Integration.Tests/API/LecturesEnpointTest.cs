@@ -3,7 +3,6 @@ using Domain.Models;
 using M10_Web_API;
 using Microsoft.AspNetCore.Mvc.Testing;
 using module_10.MockData.API;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -14,18 +13,18 @@ using Xunit;
 
 namespace module_10.Integration.Tests.API
 {
-    public class HomeworksEnpointTest
+    public class LecturesEnpointTest
     {
         WebApplicationFactory<Startup> _webClientFactory;
 
-        public HomeworksEnpointTest()
+        public LecturesEnpointTest()
         {
-            _webClientFactory = new CustomWebApplicationFactory<Startup>(); 
+            _webClientFactory = new CustomWebApplicationFactory<Startup>();
         }
 
         [Theory]
-        [InlineData("/api/homework")]
-        public async Task A_Check_If_We_Got_All_Homeworks_Json_Test(string url)
+        [InlineData("/api/lecture")]
+        public async Task A_Check_If_Got_All_Lectures_Json_Test(string url)
         {
             // Arrange
             using var client = _webClientFactory.CreateClient();
@@ -33,16 +32,16 @@ namespace module_10.Integration.Tests.API
             // Act
             var responce = await client.GetStringAsync(url);
 
-            var receivedJson = JSONSerializer.JSONDeserialize<List<Homework>>(responce);
-            var preparedJson = JSONSerializer.JSONDeserialize<List<Homework>>(HomeworksServiceData.Get_All_Homeworks());
+            var receivedJson = JSONSerializer.JSONDeserialize<List<Lecture>>(responce);
+            var preparedJson = JSONSerializer.JSONDeserialize<List<Lecture>>(LecturesServiceData.Get_All_Lectures());
 
             // Assert
             Assert.Equal(preparedJson, receivedJson);
         }
 
         [Theory]
-        [InlineData("/api/homework/2")]
-        public async Task B_Check_If_One_Expected_Homework_Returned_Test(string url)
+        [InlineData("/api/lecture/3")]
+        public async Task B_Check_If_One_Expected_Lecture_Returned_Test(string url)
         {
             // Arrange
             using var client = _webClientFactory.CreateClient();
@@ -50,24 +49,24 @@ namespace module_10.Integration.Tests.API
             // Act
             var responce = await client.GetStringAsync(url);
 
-            var receivedJson = JSONSerializer.JSONDeserialize<Homework>(responce);
-            var preparedJson = JSONSerializer.JSONDeserialize<Homework>(HomeworksServiceData.Get_Predefined_Homework_Json());
+            var receivedJson = JSONSerializer.JSONDeserialize<Lector>(responce);
+            var preparedJson = JSONSerializer.JSONDeserialize<Lector>(LectorsServiceData.Get_Predefined_Lectors_Json());
 
             // Assert
             Assert.Equal(preparedJson, receivedJson);
         }
 
         [Theory]
-        [InlineData("/api/homework/")]
-        public async void C_Check_If_New_Homework_Added_Successfully_Test(string url_post)
+        [InlineData("/api/lecture/")]
+        public async void C_Check_If_One_New_Lecture_Added_Successfully_Test(string url_post)
         {
             // Arrange
             using var client = _webClientFactory.CreateClient();
-            var new_homework = new Homework()
+            var new_lecture = new Lecture()
             {
                 Id = 0,
-                Subject = "Homework added from Integration test",
-                LectureId = 4
+                LectureName = "Test name",
+                LectorId = 4
             };
             var options = new JsonSerializerOptions
             {
@@ -75,31 +74,32 @@ namespace module_10.Integration.Tests.API
             };
 
             // Act
-            var responce_post = await client.PostAsync(url_post, new StringContent(JsonSerializer.Serialize(new_homework), Encoding.UTF8, "application/json"));
+            var responce_post = await client.PostAsync(url_post, new StringContent(JsonSerializer.Serialize(new_lecture), 
+                                                                                   Encoding.UTF8, "application/json"));
             if (responce_post.IsSuccessStatusCode)
             {
                 var str = await responce_post.Content.ReadAsStringAsync();
                 var responce = await client.GetStringAsync(str);
 
-                var receivedJson = JsonSerializer.Deserialize<Homework>(responce, options);
+                var receivedJson = JsonSerializer.Deserialize<Lecture>(responce, options);
 
                 // Assert
-                Assert.Equal(new_homework.Subject, receivedJson.Subject);
-                Assert.Equal(new_homework.LectureId, receivedJson.LectureId);
+                Assert.Equal(new_lecture.LectureName, receivedJson.LectureName);
+                Assert.Equal(new_lecture.LectorId, receivedJson.LectorId);
             }
         }
 
         [Theory]
-        [InlineData("/api/homework/4")]
-        public async void D_Check_If_Homework_2_Is_Modified_Successfully_Test(string url_put)
+        [InlineData("/api/lecture/4")]
+        public async void D_Check_If_Lecture_4_Is_Modified_Successfully_Test(string url_put)
         {
             // Arrange
             using var client = _webClientFactory.CreateClient();
-            var edited_homework = new Homework()
+            var edited_lecture = new Lecture()
             {
                 Id = 4,
-                Subject = "Homework added from Integration test",
-                LectureId = 4
+                LectureName = "Test name",
+                LectorId = 4
             };
             var options = new JsonSerializerOptions
             {
@@ -107,23 +107,24 @@ namespace module_10.Integration.Tests.API
             };
 
             // Act
-            var responce_post = await client.PutAsync(url_put, new StringContent(JsonSerializer.Serialize(edited_homework), Encoding.UTF8, "application/json"));
+            var responce_post = await client.PutAsync(url_put, new StringContent(JsonSerializer.Serialize(edited_lecture), 
+                                                                                 Encoding.UTF8, "application/json"));
             if (responce_post.IsSuccessStatusCode)
             {
                 var str = await responce_post.Content.ReadAsStringAsync();
                 var responce = await client.GetStringAsync(str);
 
-                var receivedJson = JsonSerializer.Deserialize<Homework>(responce, options);
+                var receivedJson = JsonSerializer.Deserialize<Lecture>(responce, options);
 
                 // Assert
-                Assert.Equal(edited_homework.Subject, receivedJson.Subject);
-                Assert.Equal(edited_homework.LectureId, receivedJson.LectureId);
+                Assert.Equal(edited_lecture.LectureName, receivedJson.LectureName);
+                Assert.Equal(edited_lecture.LectorId, receivedJson.LectorId);
             }
         }
 
         [Theory]
-        [InlineData("/api/homework/3")]
-        public async void E_Check_If_Homework_2_Deleted_Successfully_Test(string url_delete_check)
+        [InlineData("/api/lecture/2")]
+        public async void E_Check_If_Lecture_2_Deleted_Successfully_Test(string url_delete_check)
         {
             // Arrange
             using var client = _webClientFactory.CreateClient();

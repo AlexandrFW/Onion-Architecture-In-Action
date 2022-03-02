@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Vasily Petrov",
+    "email": "v.petrov@gmail.com",
+    "phone": "+79002318921",
+    "age": 18
+  },
+  {
+    "id": 2,
+    "name": "Grigory Sidorov",
+    "email": "g.sidorov@yandex.ru",
+    "phone": "+79052010015",
+    "age": 17
+  },
+  {
+    "id": 3,
+    "name": "Anna Antonova",
+    "email": "anna.antonova@yandex.ru",
+    "phone": "+79103210945",
+    "age": 18
+  },
+  {
+    "id": 4,
+    "name": "Svatlana Vasileva",
+    "email": "s.vasileva@rambler.ru",
+    "phone": "+79603019915",
+    "age": 18
+  },
+  {
+    "id": 5,
+    "name": "Dmitry Nevedof",
+    "email": "d.nefedov@gmail.com",
+    "phone": "+79059872213",
+    "age": 19
+  }
+]

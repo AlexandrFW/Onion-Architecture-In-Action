@@ -121,4 +121,40 @@
   <data name="All_Homework.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\All_Homework.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="All_HomeworksStudents.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\All_HomeworksStudents.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="All_Lectors.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\All_Lectors.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="All_Lectures.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\All_Lectures.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="All_LecturesStudents.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\All_LecturesStudents.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="All_Students.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\All_Students.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="New_Homework.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\New_Homework.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="One_Homework.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\One_Homework.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="One_HomeworkStudent.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\One_HomeworkStudent.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="One_Lector.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\One_Lector.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="One_Lecture.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\One_Lecture.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="One_LectureStudent.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\One_LectureStudent.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="One_Student.json" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\One_Student.json.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
 </root>

@@ -37,14 +37,14 @@ namespace RestApi.Controllers
         public IActionResult AddLector(Lecture lecture)
         {
             var newLectorId = _lecturesService.New(lecture);
-            return Ok($"api/lector/{newLectorId}");
+            return Ok($"api/lecture/{newLectorId}");
         }
 
         [HttpPut("{id}")]
         public ActionResult<string> UpdateLecture(int id, Lecture lecture)
         {
             var lectureId = _lecturesService.Edit(id, lecture);
-            return Ok($"api/lector/{lectureId}");
+            return Ok($"api/lecture/{lectureId}");
         }
 
         [HttpDelete("{id}")]

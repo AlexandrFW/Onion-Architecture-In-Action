@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using DataAccess.ModelsDb;
+using Domain.Interfaces.Extentions;
 using Domain.Interfaces.Repositories;
 using Domain.Models;
 using Microsoft.EntityFrameworkCore;
@@ -40,8 +41,10 @@ namespace DataAccess.Repositories
 
             if (lecturesStudentsInDb is not null)
             {
+                var isStudentHasHomework = IsStudentHasHomework(lecturesStudentsInDb.LectureId, lecturesStudentsInDb.StudentId);
+
                 lecturesStudentsInDb.IsStudentAttended = lecturesStudents.IsStudentAttended;
-                lecturesStudentsInDb.Grade = lecturesStudents.Grade;
+                lecturesStudentsInDb.Grade = isStudentHasHomework ? lecturesStudents.Grade : 0;
                 lecturesStudentsInDb.LectureDate = DateTime.Now;
 
                 _context.Entry(lecturesStudentsInDb).State = EntityState.Modified;
@@ -85,6 +88,19 @@ namespace DataAccess.Repositories
             _context.SaveChanges();
 
             return $"{result.Entity.LectureId}_{result.Entity.StudentId}";
+        }
+
+        private bool IsStudentHasHomework(int lectureId, int studentId)
+        {
+            var homeworkStudent = _context.HomeworksStudents
+                                          .Where(st => st.StudentId == studentId)
+                                          .Where(h => h.Homework.LectureId == lectureId)
+                                          .FirstOrDefault();
+
+            if (homeworkStudent is not null)
+                return true;
+
+            return false;
         }
 
         private LecturesStudentsDb? GetLecturesStudentsInDb(string id)

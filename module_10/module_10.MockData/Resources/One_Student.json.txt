@@ -1,0 +1,7 @@
+{
+    "id": 3,
+    "name": "Anna Antonova",
+    "email": "anna.antonova@yandex.ru",
+    "phone": "+79103210945",
+    "age": 18
+  }

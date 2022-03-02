@@ -1,0 +1,82 @@
+[
+  {
+    "studentId": 1,
+    "homeworkId": 1
+  },
+  {
+    "studentId": 2,
+    "homeworkId": 1
+  },
+  {
+    "studentId": 3,
+    "homeworkId": 1
+  },
+  {
+    "studentId": 4,
+    "homeworkId": 1
+  },
+  {
+    "studentId": 5,
+    "homeworkId": 1
+  },
+  {
+    "studentId": 1,
+    "homeworkId": 2
+  },
+  {
+    "studentId": 2,
+    "homeworkId": 2
+  },
+  {
+    "studentId": 3,
+    "homeworkId": 2
+  },
+  {
+    "studentId": 4,
+    "homeworkId": 2
+  },
+  {
+    "studentId": 5,
+    "homeworkId": 2
+  },
+  {
+    "studentId": 1,
+    "homeworkId": 3
+  },
+  {
+    "studentId": 2,
+    "homeworkId": 3
+  },
+  {
+    "studentId": 3,
+    "homeworkId": 3
+  },
+  {
+    "studentId": 4,
+    "homeworkId": 3
+  },
+  {
+    "studentId": 5,
+    "homeworkId": 3
+  },
+  {
+    "studentId": 1,
+    "homeworkId": 4
+  },
+  {
+    "studentId": 2,
+    "homeworkId": 4
+  },
+  {
+    "studentId": 3,
+    "homeworkId": 4
+  },
+  {
+    "studentId": 4,
+    "homeworkId": 4
+  },
+  {
+    "studentId": 5,
+    "homeworkId": 4
+  }
+]

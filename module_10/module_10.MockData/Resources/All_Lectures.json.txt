@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "lectureName": "Philosophy",
+    "lectorId": 1
+  },
+  {
+    "id": 2,
+    "lectureName": "Information technology",
+    "lectorId": 2
+  },
+  {
+    "id": 3,
+    "lectureName": "Psychology",
+    "lectorId": 1
+  },
+  {
+    "id": 4,
+    "lectureName": "Mathematics",
+    "lectorId": 3
+  },
+  {
+    "id": 5,
+    "lectureName": "English",
+    "lectorId": 4
+  },
+  {
+    "id": 6,
+    "lectureName": "Cybernetics",
+    "lectorId": 5
+  },
+  {
+    "id": 7,
+    "lectureName": "Electronics",
+    "lectorId": 2
+  }
+]

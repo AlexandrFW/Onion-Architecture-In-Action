@@ -21,6 +21,7 @@ namespace M10_Web_API.Controllers
         [HttpPost]
         public IActionResult GetReport(ReportFilterCriteria reportCreteria) 
         {
+            _logger.LogInformation($"{ reportCreteria.Format } report with { reportCreteria.Criteria } criteria has been requested");
             return Ok(_reportService.GetReport(reportCreteria));
         }
     }

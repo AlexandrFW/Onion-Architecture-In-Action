@@ -1,0 +1,5 @@
+{
+    "id": 0,
+    "subject": "Homework added from Integration test",
+    "lectureId": 4
+  }

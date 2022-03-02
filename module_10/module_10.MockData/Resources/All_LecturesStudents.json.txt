@@ -1,0 +1,62 @@
+[
+  {
+    "lectureId": 2,
+    "lectureName": "Information technology",
+    "studentId": 2,
+    "studentName": "Grigory Sidorov",
+    "lectureDate": "2022-03-01T15:31:59.9323118",
+    "grade": 0,
+    "isStudentAttended": false,
+    "lectorName": "Anatoly Vladimirovich Smolny"
+  },
+  {
+    "lectureId": 2,
+    "lectureName": "Information technology",
+    "studentId": 3,
+    "studentName": "Anna Antonova",
+    "lectureDate": "2022-03-01T15:31:59.9322517",
+    "grade": 4,
+    "isStudentAttended": true,
+    "lectorName": "Anatoly Vladimirovich Smolny"
+  },
+  {
+    "lectureId": 2,
+    "lectureName": "Information technology",
+    "studentId": 4,
+    "studentName": "Svatlana Vasileva",
+    "lectureDate": "2022-03-01T15:31:59.9323132",
+    "grade": 0,
+    "isStudentAttended": true,
+    "lectorName": "Anatoly Vladimirovich Smolny"
+  },
+  {
+    "lectureId": 3,
+    "lectureName": "Psychology",
+    "studentId": 4,
+    "studentName": "Svatlana Vasileva",
+    "lectureDate": "2022-03-01T15:31:59.9323129",
+    "grade": 5,
+    "isStudentAttended": true,
+    "lectorName": "Vitaly Genadievich Gromov"
+  },
+  {
+    "lectureId": 2,
+    "lectureName": "Information technology",
+    "studentId": 5,
+    "studentName": "Dmitry Nevedof",
+    "lectureDate": "2022-03-01T15:31:59.9323135",
+    "grade": 0,
+    "isStudentAttended": false,
+    "lectorName": "Anatoly Vladimirovich Smolny"
+  },
+  {
+    "lectureId": 3,
+    "lectureName": "Psychology",
+    "studentId": 5,
+    "studentName": "Dmitry Nevedof",
+    "lectureDate": "2022-03-01T15:31:59.9323126",
+    "grade": 3,
+    "isStudentAttended": true,
+    "lectorName": "Vitaly Genadievich Gromov"
+  }
+]
