@@ -94,7 +94,7 @@ namespace DataAccess.Repositories
             var homeworkStudent = _context.HomeworksStudents
                                           .Where(st => st.StudentId == studentId)
                                           .Where(h => h.Homework.LectureId == lectureId)
-                                          .FirstOrDefault();
+                                          .Select(d => d);
 
             if (homeworkStudent is not null)
                 return true;

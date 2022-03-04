@@ -39,7 +39,7 @@ namespace module_10.Tests
             _context.Dispose();
         }
 
-        [Test]
+        [Test, Order(1)]
         public void Check_GetAll_Test()
         {
             // Arrange            
@@ -55,7 +55,7 @@ namespace module_10.Tests
             Assert.That(listForCompare.SequenceEqual(list), Is.True);
         }
 
-        [Test]
+        [Test, Order(2)]
         [TestCase("2_1")]
         public void Check_Get_One_Entity_Test(string id)
         {
@@ -69,7 +69,7 @@ namespace module_10.Tests
             Assert.That(lectureStudentMock, Is.EqualTo(lectureStudent));
         }
 
-        [Test]
+        [Test, Order(3)]
         [TestCase("7_1")]
         public void Check_If_Entity_Not_Exist_Test(string id)
         {
@@ -83,7 +83,7 @@ namespace module_10.Tests
             Assert.That(lectureStudent, Is.Null);
         }
 
-        [Test]
+        [Test, Order(4)]
         [TestCase(5, 5, ExpectedResult = "5_5")]
         public string Check_If_New_Entity_Added_Test(int lectureId, int studentId)
         {
@@ -106,15 +106,13 @@ namespace module_10.Tests
             // Assert
         }
 
-        [Test]
+        [Test, Order(5)]
         [TestCase("2_5", 4, true)]
         public void Check_If_New_Entity_Edited_Test(string currentId, int grade, bool isStudentAttended)
         {
-            var arrKeys = currentId.Split('_');
-
             // Arrange
             var lectureStudentChanged = new LecturesStudents
-{
+            {
                 LectureId = 0,
                 LectureName = "",
                 StudentId = 0,

@@ -11,6 +11,10 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
 
+// Need to turn off test parallelization so we can validate the run order
+[assembly: CollectionBehavior(DisableTestParallelization = true)]
+[assembly: TestCollectionOrderer("module_10.Integration.Tests.DisplayNameOrderer", "module_10.Integration.Tests.API")]
+
 namespace module_10.Integration.Tests.API
 {
     public class StudentsEnpointTest
@@ -32,8 +36,8 @@ namespace module_10.Integration.Tests.API
             // Act
             var responce = await client.GetStringAsync(url);
 
-            var receivedJson = JSONSerializer.JSONDeserialize<List<Student>>(responce);
-            var preparedJson = JSONSerializer.JSONDeserialize<List<Student>>(StudentsServiceData.Get_All_Students());
+            var receivedJson = JsonSerializer.Deserialize<List<Student>>(responce);
+            var preparedJson = JsonSerializer.Deserialize<List<Student>>(StudentsServiceData.Get_All_Students());
 
             // Assert
             Assert.Equal(preparedJson, receivedJson);

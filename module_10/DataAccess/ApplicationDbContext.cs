@@ -106,7 +106,7 @@ namespace DataAccess
                 new HomeworksStudentsDb() { StudentId = 2, HomeworkId = 4 },
                 new HomeworksStudentsDb() { StudentId = 3, HomeworkId = 4 },
                 new HomeworksStudentsDb() { StudentId = 4, HomeworkId = 4 },
-                new HomeworksStudentsDb() { StudentId = 5, HomeworkId = 4 }
+                new HomeworksStudentsDb() { StudentId = 5, HomeworkId = 4 },
             };
 
             var lecturesStudents = new LecturesStudentsDb[]

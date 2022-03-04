@@ -34,6 +34,9 @@ namespace module_10.Integration.Tests
                     var db = scopedServices.GetRequiredService<ApplicationDbContext>();
                     var logger = scopedServices
                         .GetRequiredService<ILogger<CustomWebApplicationFactory<TStartup>>>();
+
+                    db.Database.EnsureDeleted();
+                    db.Database.EnsureCreated();
                 }
             });
         }

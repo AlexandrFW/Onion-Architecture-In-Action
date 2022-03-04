@@ -3,7 +3,6 @@ using Domain.Models;
 using M10_Web_API;
 using Microsoft.AspNetCore.Mvc.Testing;
 using module_10.MockData.API;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -11,6 +10,10 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Xunit;
+
+//// Need to turn off test parallelization so we can validate the run order
+//[assembly: CollectionBehavior(DisableTestParallelization = true)]
+//[assembly: TestCollectionOrderer("module_10.Integration.Tests.DisplayNameOrderer", "module_10.Integration.Tests.API")]
 
 namespace module_10.Integration.Tests.API
 {
