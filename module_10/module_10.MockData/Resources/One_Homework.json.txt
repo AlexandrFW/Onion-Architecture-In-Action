@@ -1,0 +1,5 @@
+{
+    "id": 2,
+    "subject": "Theory of Algorithms",
+    "lectureId": 2
+  }

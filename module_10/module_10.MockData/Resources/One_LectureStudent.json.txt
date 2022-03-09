@@ -1,0 +1,10 @@
+{
+    "lectureId": 2,
+    "lectureName": "Information technology",
+    "studentId": 3,
+    "studentName": "Anna Antonova",
+    "lectureDate": "2022-03-01T15:31:59.9322517",
+    "grade": 4,
+    "isStudentAttended": true,
+    "lectorName": "Anatoly Vladimirovich Smolny"
+  }

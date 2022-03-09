@@ -1,0 +1,5 @@
+{
+    "id": 2,
+    "lectureName": "Information technology",
+    "lectorId": 2
+  }
